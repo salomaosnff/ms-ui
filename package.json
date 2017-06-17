@@ -1,5 +1,5 @@
 {
-  "name": "ms-ui",
+  "name": "msui",
   "description": "Components Library for Vue.js",
   "version": "0.0.1",
   "author": "Salomão Neto <salomaosnff3@gmail.com>",
@@ -19,11 +19,9 @@
     "vue 2",
     "vue2",
     "vuejs",
-    "material design",
-    "material",
     "components"
   ],
-  "main": "dist/vue-material.js",
+  "main": "dist/MSUi.js",
   "files": [
     "dist",
     "src",

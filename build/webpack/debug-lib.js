@@ -5,7 +5,7 @@ import prodConfig from './prod-lib';
 
 const devConfig = merge(prodConfig, {
   output: {
-    filename: '[name].debug.js'
+    filename: '[name].dev.js'
   },
   devtool: 'source-map'
 });

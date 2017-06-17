@@ -83,16 +83,6 @@ const conf = merge(baseConfig, {
         context: config.assetsPath,
         from: '**/*',
         to: path.join(docsPath, 'assets')
-      },
-      {
-        context: config.docsPath,
-        from: 'changelog.html',
-        to: docsPath
-      },
-      {
-        context: config.docsPath,
-        from: 'versions.json',
-        to: docsPath
       }
     ]),
     new HtmlWebpackPlugin({
@@ -117,22 +107,6 @@ const conf = merge(baseConfig, {
         useShortDoctype: true
       },
       chunksSortMode: 'dependency'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks(module) {
-        let resource = module.resource;
-
-        if (resource && (/\.js$/).test(resource)) {
-          return resource.indexOf(config.nodePath) >= 0;
-        }
-
-        return false;
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     }),
     new OptimizeCssAssetsPlugin()
   ]
