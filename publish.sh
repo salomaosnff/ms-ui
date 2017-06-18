@@ -1,7 +1,7 @@
-echo -m 'Digite a mensagem de commit: '
+echo -n 'Digite a mensagem de commit: '
 
-DATE=`date+%Y-%m-%d:%H:%M:%S`
-MESSAGE=read
+DATE=`date +%Y-%m-%d:%H:%M:%S`
+read MESSAGE
 
 yarn build:lib
 git add -A
