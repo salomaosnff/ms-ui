@@ -1,0 +1,14 @@
+media($min, $max = false)
+  if $max is false
+    if $min is xs
+      {block}
+    else
+      @media only screen and (min-width $devices[$min])
+        {block}
+  else
+    if $min is xs
+      @media only screen and (max-width $devices[$max])
+        {block}
+    else
+      @media only screen and (min-width $devices[$min]) and (max-width $devices[$max])
+        {block}

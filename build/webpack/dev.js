@@ -18,8 +18,7 @@ export default merge(baseWebpackConfig, {
         loader: 'vue-loader',
         options: {
           loaders: {
-            css: 'vue-style-loader!css-loader',
-            scss: 'vue-style-loader!css-loader!sass-loader'
+            css: 'vue-style-loader!css-loader'
           }
         }
       },

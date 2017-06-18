@@ -11,6 +11,6 @@ Vue.use(VueRouter);
 Vue.use(MSUi);
 
 new Vue({
-  el: '#app',
-  render: (r) => r(App)
+    el: '#app',
+    render: (r) => r(App)
 });

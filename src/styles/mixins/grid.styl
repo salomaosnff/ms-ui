@@ -1,0 +1,24 @@
+ms-col-calc($cols, $max-cols)
+  return (($cols / $max-cols) * 100%)
+
+ms-grid-flex-width($cols)
+  $width = ms-col-calc($cols, $grid-cols)
+  flex 0 $width
+
+ms-grid-flex-gutter($width)
+  padding 0 $width
+
+ms-col($cols, $gutter = $grid-gutter[xs])
+  ms-grid-flex-width $cols
+  ms-grid-flex-gutter $gutter
+
+ms-col-device($device, $cols, $gutter = false)
+  $gutter = $gutter is false ? $grid-gutter[$device] : $gutter;
+  +media($device)
+    ms-col($cols, $gutter)
+
+ms-col-offset($cols, $pos = x)
+  if $pos is y
+    margin-top ms-col-calc($cols, $grid-cols)
+  else
+    margin-left ms-col-calc($cols, $grid-cols)

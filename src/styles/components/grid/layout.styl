@@ -1,0 +1,48 @@
+.ms-layout
+  row-margin($pos, $device)
+    +media($device)
+      margin-{$pos} $grid-row-margin[$device]
+
+  display flex
+
+  &-reverse
+    flex-direction row-reverse
+
+  &-col
+    flex-direction column
+
+    ../-reverse.ms-layout-col
+      flex-direction column-reverse
+      border 2px solid red
+
+  &-justify
+    &-start
+      justify-content flex-start
+    &-center
+      justify-content center
+    &-end
+      justify-content flex-end
+    &-around
+      justify-content space-around
+    &-between
+      justify-content space-between
+
+  &-align
+    &-start
+      align-content flex-start
+    &-center
+      align-content center
+    &-end
+      align-content flex-end
+    &-around
+      align-content space-around
+    &-between
+      align-content space-between
+
+  for $device, $size in $devices
+    row-margin('bottom', $device)
+    &-column
+      row-margin('right', $device)
+
+  &-wrap
+    flex-wrap wrap

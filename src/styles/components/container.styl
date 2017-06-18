@@ -1,0 +1,13 @@
+.ms-container
+  display block
+  position relative
+  width 100%
+  max-width $devices[md];
+  margin 0 auto
+
+  for $device, $size in $devices
+    +media($device)
+      padding 0 $container-padding[$device];
+
+  &-fluid
+    max-width 100%

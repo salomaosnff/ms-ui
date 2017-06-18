@@ -56,7 +56,7 @@
     "dot-location": [2, "property"],
     "eol-last": 2,
     "eqeqeq": [2, "smart"],
-    "indent": [2, 2, {
+    "indent": [2, 4, {
       "SwitchCase": 1
     }],
     "key-spacing": [1, {
@@ -120,7 +120,7 @@
     "no-unused-vars": 1,
     "no-use-before-define": 1,
     "one-var": [2, "never"],
-    "quote-props": [1, "as-needed"],
+    "quote-props": 0,
     "quotes": [2, "single"],
     "radix": 2,
     "semi": [2, "always"],

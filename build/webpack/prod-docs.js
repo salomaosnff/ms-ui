@@ -30,10 +30,6 @@ const conf = merge(baseConfig, {
             css: ExtractTextPlugin.extract({
               use: 'css-loader',
               fallback: 'vue-style-loader'
-            }),
-            scss: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader',
-              fallback: 'vue-style-loader'
             })
           },
           postcss: [
@@ -48,13 +44,6 @@ const conf = merge(baseConfig, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           use: 'css-loader',
-          fallback: 'vue-style-loader'
-        })
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          use: 'css-loader!sass-loader',
           fallback: 'vue-style-loader'
         })
       }
