@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 72);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -132,7 +132,7 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 21:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -143,20 +143,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = install;
 
-var _container = __webpack_require__(32);
+var _icon = __webpack_require__(35);
 
-var _container2 = _interopRequireDefault(_container);
+var _icon2 = _interopRequireDefault(_icon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function install(Vue) {
-    Vue.component('ms-container', _container2.default);
+function install(Vue, options) {
+    var opt = options.icon;
+
+    _icon2.default.props = {
+        classFormat: {
+            type: String,
+            default: opt.classFormat
+        },
+        inContent: {
+            type: String,
+            default: '' + opt.inContent
+        }
+    };
+
+    Vue.component('ms-icon', _icon2.default);
 }
 module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 27:
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -173,12 +186,18 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    props: {
-        fluid: String
+    data: function data() {
+        return {
+            icon: ''
+        };
     },
+    mounted: function mounted() {
+        this.icon = this.$slots.default[0].text;
+    },
+
     computed: {
         classes: function classes() {
-            return ['ms-container', { 'ms-container-fluid': typeof this.fluid !== 'undefined' }];
+            return this.classFormat.replace(/%/g, this.icon);
         }
     }
 };
@@ -186,22 +205,22 @@ module.exports = exports['default'];
 
 /***/ }),
 
-/***/ 32:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(27),
+  __webpack_require__(30),
   /* template */
-  __webpack_require__(38),
+  __webpack_require__(36),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/home/adrian/Projetos/ms-ui/src/components/container/container.vue"
+Component.options.__file = "/home/adrian/Projetos/ms-ui/src/components/icon/icon.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] container.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] icon.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -210,9 +229,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-777f4df2", Component.options)
+    hotAPI.createRecord("data-v-4b33b9e3", Component.options)
   } else {
-    hotAPI.reload("data-v-777f4df2", Component.options)
+    hotAPI.reload("data-v-4b33b9e3", Component.options)
   }
 })()}
 
@@ -221,28 +240,28 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 38:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('span', {
     class: _vm.classes
-  }, [_vm._t("default")], 2)
+  }, [(['', 'true'].indexOf(_vm.inContent) >= 0) ? _vm._t("default") : _vm._e()], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-777f4df2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4b33b9e3", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 70:
+/***/ 72:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(21);
+module.exports = __webpack_require__(23);
 
 
 /***/ })

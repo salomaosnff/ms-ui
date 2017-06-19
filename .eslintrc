@@ -3,7 +3,7 @@
     "html"
   ],
   "ecmaFeatures": {
-    "arrowFunctions": true,
+    "arrowFunctions": false,
     "destructuring": true,
     "classes": true,
     "defaultParams": true,

@@ -1,0 +1,23 @@
+$dev = keys($devices);
+
+for $device, $index in $dev
+    
+    $next = $dev[$index + 1]
+
+    .ms-{$device}-hide
+    
+        if !$next
+            +media($device)
+                display: none !important
+        else
+            +media($device, $next)
+                display: none !important
+
+    .ms-{$device}-show
+    
+        if !$next
+            +media($device)
+                display: initial !important
+        else
+            +media($device, $next)
+                display: initial !important
