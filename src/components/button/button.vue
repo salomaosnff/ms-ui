@@ -1,12 +1,12 @@
 <template>
     <a v-if="href" :id="id" :href="href" :class="classes">
         <ms-icon v-if="prependIcon">{{prependIcon}}</ms-icon>
-        <slot></slot>
+        <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
     </a>
     <button v-else :id="id" :class="classes" :disabled="disabled">
         <ms-icon v-if="prependIcon">{{prependIcon}}</ms-icon>
-        <slot></slot>
+        <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
     </button>
 </template>

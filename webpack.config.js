@@ -42,7 +42,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    stats: 'errors-only'
   },
   performance: {
     hints: false

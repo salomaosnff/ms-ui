@@ -1,3 +1,22 @@
 .ms-button
-    display: inline-block
-    position: relative
+    $p = $ms-theme['default']['base'];
+    $s = $ms-theme['default']['sec'];
+    display inline-block;
+    position relative;
+    padding .5em 1em;
+    border-radius .25em;
+    text-decoration none;
+    text-transform uppercase;
+    font bold .9em 'Roboto';
+    border none;
+    background: $p;
+    color rgba($s, 82%)
+    margin .5em .25em
+
+    .mdi
+        vertical-align baseline;
+
+    for $name, $color in $ms-theme
+        &-{$name}
+            background $color['base'];
+            color rgba($color['sec'], 82%);
