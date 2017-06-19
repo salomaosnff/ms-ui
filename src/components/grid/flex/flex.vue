@@ -8,15 +8,11 @@
     export default {
         props: {
             id: String,
-            'class': String,
             xs: String,
             sm: String,
             md: String,
             lg: String,
             xl: String
-        },
-        mounted() {
-            console.log('a', this.row);
         },
         computed: {
             classes() {
