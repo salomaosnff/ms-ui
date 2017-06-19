@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 /* Configs */
 import MSUi from '../../src';
 
-import App from './App';
+import App from './App.vue';
 
 Vue.use(VueRouter);
 Vue.use(MSUi);
