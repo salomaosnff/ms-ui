@@ -12,7 +12,10 @@
 </template>
 
 <script>
+import bindEvents from '../../mixins/bindEvents';
+
 export default {
+    mixins: [bindEvents],
     props: {
         id: String,
         href: String,

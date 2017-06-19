@@ -8,7 +8,6 @@
     export default {
         props: {
             id: String,
-            'class': String,
             col: String,
             wrap: String,
             reverse: String,

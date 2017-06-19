@@ -1,6 +1,6 @@
 <template>
     <ms-container>
-        <ms-button danger prepend-icon="pencil" append-icon="google">Happy Button</ms-button>
+        <ms-button @click="test" danger prepend-icon="pencil" append-icon="google">Happy Button</ms-button>
     </ms-container>
 </template>
 
