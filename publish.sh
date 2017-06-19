@@ -5,7 +5,7 @@ BREAK=$'\n'
 DATE=`date +%Y-%m-%d:%H:%M:%S`
 COMMIT="Builded in ${DATE}${BREAK}${MESSAGE}"
 
-yarn build:lib
+yarn build
 git add -A
 git commit -m "$COMMIT"
 git push
