@@ -2,8 +2,8 @@ echo -n 'Digite a mensagem de commit: '
 read MESSAGE
 
 BREAK=$'\n'
-DATE=`date +%Y-%m-%d:%H:%M:%S`
-COMMIT="Builded in ${DATE}${BREAK}${MESSAGE}"
+DATE=`date +"%d/%m/%Y ás %H:%M:%S"`
+COMMIT="Build feito em ${DATE}${BREAK}${MESSAGE}"
 
 yarn build
 git add -A
