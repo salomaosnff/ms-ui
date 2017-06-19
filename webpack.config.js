@@ -4,14 +4,11 @@ const
 ;
 
 module.exports = {
-  entry: {
-    'MSUi': './src/index.js',
-    'docs': './docs/src/index.js'
-  },
+  entry: './docs/src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: '[name].js'
+    filename: 'docs.js'
   },
   module: {
     rules: [

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Salomão Neto <salomaosnff@yahoo.com>",
   "private": true,
-  "main": "dist/MSUi.js",
+  "main": "src/index.js",
   "files": [
     "dist/",
     "src/",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-env": "^1.5.1",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
