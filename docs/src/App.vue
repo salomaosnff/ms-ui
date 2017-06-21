@@ -1,24 +1,52 @@
 <template>
     <ms-container>
-        <ms-button id="test" raised prepend-icon="account">Default</ms-button>
-        <ms-button primary raised prepend-icon="account">Primary</ms-button>
-        <ms-button success raised prepend-icon="account">Success</ms-button>
-        <ms-button info raised prepend-icon="account">Info</ms-button>
-        <ms-button warning raised prepend-icon="account">Warning</ms-button>
-        <ms-button danger raised prepend-icon="download">Danger</ms-button>
+        <h1>Botões</h1>
+        <ms-btn v-for="style, i in styles" v-bind="{[style]: true}" :key="i">{{ style }}</ms-btn>
+        <hr>
+        <h2>Sizes</h2>
+        <ms-btn v-for="size, i in sizes" v-bind="{[size]: true}" :key="i" primary>Button {{ size }}</ms-btn>
+        <hr>
+        <h2>Prepend Icons</h2>
+        <ms-btn v-for="icon, style, i in icons" v-bind="{[style]: true, prependIcon: icon}" :key="i">{{ style }}</ms-btn>
+    
+        <h2>Append Icons</h2>
+        <ms-btn v-for="icon, style, i in icons" v-bind="{[style]: true, appendIcon: icon}" :key="i">{{ style }}</ms-btn>
+        <hr>
+        <h2>Flat</h2>
+        <ms-btn v-for="style, i in styles" v-bind="{[style]: true}" flat :key="i">{{ style }}</ms-btn>
+    
     </ms-container>
 </template>
 
 <style lang="stylus">
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
     @import "../../src/styles/main"
+
+    for i in (1..6)
+        h{i}
+            margin .5em 0
+
+    hr
+        margin 1em
+        border 1px solid #CCC
 </style>
 
 <script>
     export default {
         mounted() {},
         data() {
-            return {};
+            return {
+                styles: ['default', 'primary', 'success', 'info', 'warning', 'error'],
+                sizes: ['xs', 'sm', 'default', 'lg'],
+                icons: {
+                    default: 'account',
+                    primary: 'download',
+                    success: 'check',
+                    info   : 'information',
+                    warning: 'alert',
+                    error  : 'alert-circle'
+                }
+            };
         },
         methods: {
             alert(msg) {

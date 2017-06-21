@@ -19,7 +19,7 @@
     border-radius: 50%
     background: currentColor
     opacity: 0
-    transition: $ripple-animation-transition
+    transition: .4s $transition.linear-out-slow-in
     pointer-events: none
     overflow: hidden
     will-change: opacity
@@ -28,4 +28,4 @@
       transition: none
       
     &--visible
-        opacity: $ripple-animation-visible-opacity
+        opacity: .25

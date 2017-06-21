@@ -1,10 +1,6 @@
-function style (el, value) {
-  [
-    'transform',
-    'webkitTransform'
-  ].forEach(i => {
-    el.style[i] = value
-  })
+function transform (el, value) {
+  ['transform','webkitTransform']
+  .forEach(i => el.style[i] = value);
 }
 
 const ripple = {
@@ -20,6 +16,7 @@ const ripple = {
     }
 
     const size = el.clientWidth > el.clientHeight ? el.clientWidth : el.clientHeight
+
     animation.className = 'ripple__animation'
     animation.style.width = `${size * (value.center ? 1 : 2)}px`
     animation.style.height = animation.style.width
@@ -32,12 +29,12 @@ const ripple = {
 
     animation.classList.add('ripple__animation--enter')
     animation.classList.add('ripple__animation--visible')
-    style(animation, `translate(-50%, -50%) translate(${x}, ${y}) scale3d(0.01,0.01,0.01)`)
+    transform(animation, `translate(-50%, -50%) translate(${x}, ${y}) scale(0)`)
     animation.dataset.activated = Date.now()
 
     setTimeout(() => {
       animation.classList.remove('ripple__animation--enter')
-      style(animation, `translate(-50%, -50%) translate(${x}, ${y})  scale3d(0.99,0.99,0.99)`)
+      transform(animation, `translate(-50%, -50%) translate(${x}, ${y})  scale(1.05)`)
     }, 0)
   },
 

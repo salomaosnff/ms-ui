@@ -1,26 +1,36 @@
-.ms-button
+.btn
     $default = $ms-theme['default'];
 
     ms-elevation-transition()
     display inline-block
     position relative
-    padding .75em 1em
+    padding .6439em 1.142857143em
     border-radius .15em
     text-decoration none
     text-transform uppercase
     font bold .9em 'Roboto'
     border none
     background $default['base'];
-    color rgba($default['sec'], 82%)
-    margin .5em .25em
-    cursor: pointer
+    color $default['sec'];
+    margin .5em
+    cursor pointer
+    text-align center
+
+    & + .btn
+        margin-left: .25em
+
+    .mdi, .btn__text
+        vertical-align middle
 
     .mdi
-        vertical-align middle
+        $icon-margin = .4em;
         font-size: 1.1em
 
-    .text
-        margin: 0 .3em
+        &.icon__append
+            margin: 0 0 0 $icon-margin
+        &.icon__prepend
+            margin: 0 $icon-margin 0 0
+
 
     // Disabled
     &:disabled, &-disabled
@@ -40,40 +50,37 @@
         ms-elevation 10
 
     // Raised
-    &-raised
+    &--raised
         ms-elevation 1
 
         &:active
             ms-elevation 6
 
     // Sizes
-    &-xs
+    &--xs
         font-size: .6em
-    &-sm
+    &--sm
         font-size: .8em
-    &-lg
+    &--lg
         font-size: 1.2em
 
     // Colors
     for $name, $color in $ms-theme
-        &-{$name}
+        &.{$name}
             background $color['base'];
-            color rgba($color['sec'], 82%)
+            color rgba($color['sec'], 90%);
 
             &:hover
                 background $color['hover'];
 
             &:active
                 background $color['active'];
-            
-            &.ms-button-flat
-                color: rgba($color['base'], 82%);
 
     // Flat
-    &-flat
+    &--flat
         ms-elevation 0
         background: none
-        color: $color['base'];
+        color: rgba($default['sec'], 90%);
 
         &:hover
             background: $default['hover'];

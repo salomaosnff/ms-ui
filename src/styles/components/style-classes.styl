@@ -1,0 +1,20 @@
+build_style_classes($style_object, $bg="--bg", $fg="--text")
+    $ignore = "b" "base";
+
+    for $style, $sub-styles in $style_object
+        .{$style}
+            for $style-name, $color in $sub-styles
+                if index($ignore, $style-name) isnt null
+                    &{$bg}
+                        background-color $color
+                    &{$fg}
+                        color $color
+                else
+                    &-{$style-name}
+                        &{$bg}
+                            background-color $color
+                        &{$fg}
+                            color $color
+
+build_style_classes($ms-colors)
+build_style_classes($ms-theme)

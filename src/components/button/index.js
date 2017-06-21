@@ -1,5 +1,5 @@
-import Button from './button.vue';
+import Button from './Button.js';
 
 export default function install(Vue) {
-    Vue.component('ms-button', Button);
+    Vue.component('ms-btn', Button);
 }

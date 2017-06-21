@@ -4,7 +4,7 @@
         <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
     </a>
-    <button v-else :id="id" :class="classes" :disabled="disabled" v-ripple>
+    <button v-else :id="id" :class="classes" :disabled="disabled" v-bind:ripple="{ class: 'ms-success--text' }">
         <ms-icon v-if="prependIcon">{{prependIcon}}</ms-icon>
         <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
@@ -12,10 +12,11 @@
 </template>
 
 <script>
+import RouterLink from '../../mixins/route-link';
 import bindEvents from '../../mixins/bindEvents';
 
 export default {
-    mixins: [bindEvents],
+    mixins: [RouterLink, bindEvents],
     props: {
         id: String,
         href: String,
