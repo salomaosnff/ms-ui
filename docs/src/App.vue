@@ -1,11 +1,11 @@
 <template>
     <ms-container>
-        <ms-button  @click="alert('Default!')" prepend-icon="pencil">Default</ms-button>
-        <ms-button primary @click="alert('Primary!')" prepend-icon="pencil">Primary</ms-button>
-        <ms-button success @click="alert('Success!')" prepend-icon="pencil">Success</ms-button>
-        <ms-button info @click="alert('Info!')" prepend-icon="pencil">Info</ms-button>
-        <ms-button warning @click="alert('Warning!')" prepend-icon="pencil">Warning</ms-button>
-        <ms-button danger @click="alert('Danger!')" prepend-icon="pencil">Danger</ms-button>
+        <ms-button id="test" raised prepend-icon="account">Default</ms-button>
+        <ms-button primary raised prepend-icon="account">Primary</ms-button>
+        <ms-button success raised prepend-icon="account">Success</ms-button>
+        <ms-button info raised prepend-icon="account">Info</ms-button>
+        <ms-button warning raised prepend-icon="account">Warning</ms-button>
+        <ms-button danger raised prepend-icon="download">Danger</ms-button>
     </ms-container>
 </template>
 

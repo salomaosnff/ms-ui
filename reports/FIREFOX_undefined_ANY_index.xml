@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="0">
+
+  <testsuite name="index"
+    errors="0" failures="0" hostname="" id="" package="index" skipped="0"
+    tests="0" time="0.000" timestamp="Wed, 21 Jun 2017 02:39:57 GMT">
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &quot;#test&quot; using: css selector
+    at Timeout._onTimeout (/home/adrian/Projetos/ms-ui/tests/click/click.js:9:19)
+    at ontimeout (timers.js:386:14)
+    at tryOnTimeout (timers.js:250:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+ERROR: Unable to locate element: &quot;#test&quot; using: css selector
+    at Timeout._onTimeout (/home/adrian/Projetos/ms-ui/tests/click/click.js:9:19)
+    at ontimeout (timers.js:386:14)
+    at tryOnTimeout (timers.js:250:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+ERROR: Unable to locate element: &quot;#test&quot; using: css selector
+    at Timeout._onTimeout (/home/adrian/Projetos/ms-ui/tests/click/click.js:9:19)
+    at ontimeout (timers.js:386:14)
+    at tryOnTimeout (timers.js:250:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+ERROR: Unable to locate element: &quot;#test&quot; using: css selector
+    at Timeout._onTimeout (/home/adrian/Projetos/ms-ui/tests/click/click.js:9:19)
+    at ontimeout (timers.js:386:14)
+    at tryOnTimeout (timers.js:250:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

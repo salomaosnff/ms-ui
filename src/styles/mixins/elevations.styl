@@ -1,0 +1,6 @@
+ms-elevation($z, important = false)
+  box-shadow: $ms-elevation-+$z+dp (important ? !important : )
+
+ms-elevation-transition($duration = 280ms, $easing = cubic-bezier(.4, 0, .2, 1))
+  transition: box-shadow $duration $easing
+  will-change: box-shadow

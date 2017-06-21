@@ -1,0 +1,128 @@
+23:39:39.894 INFO - Selenium build info: version: '3.4.0', revision: 'unknown'
+23:39:39.895 INFO - Launching a standalone Selenium Server
+2017-06-20 23:39:39.920:INFO::main: Logging initialized @466ms to org.seleniumhq.jetty9.util.log.StdErrLog
+23:39:39.994 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+ registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform LINUX
+23:39:39.995 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform LINUX
+23:39:39.995 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+23:39:39.995 INFO - Driver provider com.opera.core.systems.OperaDriver registration is skipped:
+Unable to create new instances on this machine.
+23:39:39.995 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+23:39:39.995 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+23:39:39.996 INFO - Driver provider org.openqa.selenium.safari.SafariDriver registration is skipped:
+ registration capabilities Capabilities [{browserName=safari, version=, platform=MAC}] does not match the current platform LINUX
+2017-06-20 23:39:40.062:INFO:osjs.Server:main: jetty-9.4.3.v20170317
+2017-06-20 23:39:40.115:INFO:osjsh.ContextHandler:main: Started o.s.j.s.ServletContextHandler@475530b9{/,null,AVAILABLE}
+2017-06-20 23:39:40.135:INFO:osjs.AbstractConnector:main: Started ServerConnector@548e7350{HTTP/1.1,[http/1.1]}{0.0.0.0:4444}
+2017-06-20 23:39:40.138:INFO:osjs.Server:main: Started @685ms
+23:39:40.139 INFO - Selenium Server is up and running
+23:39:40.581 INFO - SessionCleaner initialized with insideBrowserTimeout 0 and clientGoneTimeout 1800000 polling every 180000
+23:39:40.635 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Click / Click, browserName=firefox, javascriptEnabled=true, platform=ANY}]])
+23:39:40.670 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, marionette=true, name=Click / Click, browserName=firefox, javascriptEnabled=true, platform=ANY}]
+1498012781218	geckodriver	INFO	Listening on 127.0.0.1:19172
+1498012781538	geckodriver::marionette	INFO	Starting browser /usr/lib/firefox/firefox with args ["-marionette"]
+
+(firefox:24863): Gtk-WARNING **: Theme parsing error: gtk-contained.css:27:19: Missing name of pseudo-class
+1498012786418	Marionette	INFO	Listening on port 34361
+23:39:46.650 INFO - Detected dialect: W3C
+23:39:46.678 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, marionette=true, name=Click / Click, browserName=firefox, javascriptEnabled=true, platform=ANY}]]
+23:39:46.740 INFO - Executing: [get: http://localhost:8080])
+23:39:48.263 INFO - Executing: [find element: By.cssSelector: #test])
+23:39:50.257 INFO - Executing: [delete session: 9e501b09-1663-4e51-8d77-fe75c31d852d])
+23:39:50.260 INFO - Executing: [find element: By.cssSelector: #test])
+23:39:50.408 INFO - Done: [get: http://localhost:8080]
+23:39:50.486 INFO - Done: [find element: By.cssSelector: #test]
+23:39:50.494 INFO - Executing: [click: 0 [[FirefoxDriver: firefox on ANY (5eac901f-d625-493e-825d-c3359789179c)] -> css selector: #test]])
+1498012790808	Marionette	INFO	New connections will no longer be accepted
+23:39:51.345 INFO - Done: [delete session: 9e501b09-1663-4e51-8d77-fe75c31d852d]
+23:39:51.907 ERROR - Unexpected exception during findElement
+org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'adrianc-xubuntu', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-54-generic', java.version: '1.8.0_131'
+Driver info: driver.version: EventFiringWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:131)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:501)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:104)
+	at com.sun.proxy.$Proxy4.findElement(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:188)
+	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:48)
+	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:33)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+23:39:51.910 WARN - Exception thrown
+org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'adrianc-xubuntu', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-54-generic', java.version: '1.8.0_131'
+Driver info: driver.version: EventFiringWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:131)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:410)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:501)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:430)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:402)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:104)
+	at com.sun.proxy.$Proxy4.findElement(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:188)
+	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:48)
+	at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:33)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+23:39:51.913 WARN - Exception: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'adrianc-xubuntu', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-54-generic', java.version: '1.8.0_131'
+Driver info: driver.version: EventFiringWebDriver
+23:39:52.407 WARN - Exception thrown
+org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'adrianc-xubuntu', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-54-generic', java.version: '1.8.0_131'
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:131)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:272)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:82)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement$1.invoke(EventFiringWebDriver.java:332)
+	at com.sun.proxy.$Proxy5.click(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$EventFiringWebElement.click(EventFiringWebDriver.java:345)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.remote.server.KnownElements$1.invoke(KnownElements.java:64)
+	at com.sun.proxy.$Proxy6.click(Unknown Source)
+	at org.openqa.selenium.remote.server.handler.ClickElement.call(ClickElement.java:30)
+	at org.openqa.selenium.remote.server.handler.ClickElement.call(ClickElement.java:22)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+23:39:52.408 WARN - Exception: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'adrianc-xubuntu', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-54-generic', java.version: '1.8.0_131'
+Driver info: driver.version: RemoteWebDriver

@@ -4,7 +4,7 @@
         <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
     </a>
-    <button v-else :id="id" :class="classes" :disabled="disabled">
+    <button v-else :id="id" :class="classes" :disabled="disabled" v-ripple>
         <ms-icon v-if="prependIcon">{{prependIcon}}</ms-icon>
         <span class="text"><slot></slot></span>
         <ms-icon v-if="appendIcon">{{appendIcon}}</ms-icon>
@@ -27,12 +27,12 @@ export default {
         danger: String,
         xs: String,
         sm: String,
-        md: String,
         lg: String,
-        xl: String,
         loading: String,
         prependIcon: String,
-        appendIcon: String
+        appendIcon: String,
+        raised: String,
+        flat: String
     },
     computed: {
         classes() {
@@ -56,9 +56,19 @@ export default {
             return [
                 'ms-button',
                 {'ms-button-disabled': typeof this.disabled !== 'undefined'},
+                {'ms-button-raised': typeof this.raised !== 'undefined'},
+                {'ms-button-flat': typeof this.flat !== 'undefined'},
                 {[`ms-button-${size}`]: size},
                 {[`ms-button-${type}`]: type}
             ];
+        }
+    },
+    mounted() {
+        const events = ['mouseup', 'mouseleave'];
+        const blur = e => this.$el.blur();
+
+        for(let e in events) {
+            this.$el.addEventListener(events[e], blur);
         }
     }
 };

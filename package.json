@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",
     "build": "rm dist -rf && cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "pub": "bash publish.sh"
+    "pub": "bash publish.sh",
+    "test": "nightwatch"
   },
   "dependencies": {
     "vue": "^2.3.3"
@@ -27,6 +28,7 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "nightwatch": "^0.9.16",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-loader": "^12.1.0",

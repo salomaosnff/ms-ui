@@ -1,5 +1,6 @@
 // Directives
 import Media from './directives/media';
+import Ripple from './directives/ripple';
 
 // Components
 import Grid from './components/grid/';
@@ -10,6 +11,7 @@ import Button from './components/button/';
 const Plugin = {
     // Directives
     Media,
+    Ripple,
 
     // Components
     Grid,

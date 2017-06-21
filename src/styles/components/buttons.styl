@@ -1,22 +1,82 @@
 .ms-button
-    $p = $ms-theme['default']['base'];
-    $s = $ms-theme['default']['sec'];
-    display inline-block;
-    position relative;
-    padding .5em 1em;
-    border-radius .25em;
-    text-decoration none;
-    text-transform uppercase;
-    font bold .9em 'Roboto';
-    border none;
-    background: $p;
-    color rgba($s, 82%)
+    $default = $ms-theme['default'];
+
+    ms-elevation-transition()
+    display inline-block
+    position relative
+    padding .75em 1em
+    border-radius .15em
+    text-decoration none
+    text-transform uppercase
+    font bold .9em 'Roboto'
+    border none
+    background $default['base'];
+    color rgba($default['sec'], 82%)
     margin .5em .25em
+    cursor: pointer
 
     .mdi
-        vertical-align baseline;
+        vertical-align middle
+        font-size: 1.1em
 
+    .text
+        margin: 0 .3em
+
+    // Disabled
+    &:disabled, &-disabled
+        $disabled = $ms-colors['grey'];
+
+        pointer-events: none
+        background $disabled['l2'];
+        color $disabled['d1'];
+
+    &:hover
+        background: $default['hover'];
+    
+    &:active
+        background $default['active'];
+
+    &:focus:not(:active)
+        ms-elevation 10
+
+    // Raised
+    &-raised
+        ms-elevation 1
+
+        &:active
+            ms-elevation 6
+
+    // Sizes
+    &-xs
+        font-size: .6em
+    &-sm
+        font-size: .8em
+    &-lg
+        font-size: 1.2em
+
+    // Colors
     for $name, $color in $ms-theme
         &-{$name}
             background $color['base'];
-            color rgba($color['sec'], 82%);
+            color rgba($color['sec'], 82%)
+
+            &:hover
+                background $color['hover'];
+
+            &:active
+                background $color['active'];
+            
+            &.ms-button-flat
+                color: rgba($color['base'], 82%);
+
+    // Flat
+    &-flat
+        ms-elevation 0
+        background: none
+        color: $color['base'];
+
+        &:hover
+            background: $default['hover'];
+
+        &:active
+            background: $default['active'];

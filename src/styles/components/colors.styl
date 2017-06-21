@@ -1,0 +1,15 @@
+for $name, $color in $ms-colors
+    for $class, $tom in $color
+
+        .ms-{$name}
+            if $class is 'b'
+                background-color: $tom
+
+                &--text
+                    color $tom
+            else
+                &-{$class}
+                    background-color: $tom
+
+                    &--text
+                        color $tom
