@@ -7,6 +7,7 @@ import Grid from './components/grid/';
 import Container from './components/container/';
 import Icon from './components/icon/';
 import Button from './components/button/';
+import Form from './components/form/'
 
 const Plugin = {
     // Directives
@@ -17,7 +18,8 @@ const Plugin = {
     Grid,
     Container,
     Icon,
-    Button
+    Button,
+    Form
 };
 
 Plugin.install = (Vue, options) => {

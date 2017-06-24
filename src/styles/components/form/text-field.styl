@@ -1,0 +1,186 @@
+.input--group
+    $default = $ms-theme['default'];
+
+    display: block
+    width: 100%
+    position: relative
+    margin: 1.25em 0 1em 0
+    clearfix()
+
+    // Required
+    &.input--required
+
+        // Required Mark
+        .input--label:after
+            content: '*'
+            color: $ms-colors['red']['b'];
+
+    // Focused and Dirty
+    &.input--focused, &.input--dirty
+
+        // Label
+        .input--label
+            transform translate3d(0, -115%, 0) scale(.8)
+
+    // Focused
+    &.input--focused
+
+        $primary-color = $ms-theme['primary']['base'];
+
+        // Icons
+        .input--prepend-icon
+            color: $primary-color;
+
+        // Container
+        .input--container
+
+            // Expand Bottom Bar
+            &:after
+                width: 100%
+
+            // Change Label Color
+            .input--label
+                color: $primary-color;
+
+    // Error
+    &.input--error
+
+        $error-color = $ms-theme['error']['base'];
+
+        // Icons
+        .input--prepend-icon
+            color: $error-color;
+
+        // Container Error
+        .input--container
+            &, &:after
+                border-bottom-color: $error-color;
+
+            .input--label
+                color: $error-color;
+
+        // Counter Error
+        .input--counter
+            color: $error-color;
+
+    // Input and Label
+    .input--container
+        position: relative
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        border-bottom: .1em solid $ms-colors['grey']['l2'];
+
+        // Bottom Bar
+        &:after
+            content: ''
+            display: block
+            position: absolute
+            left: 0
+            top: 100%
+            width: 0
+            height: 0
+            border-bottom: .15em solid $ms-theme['primary']['base'];
+            transition: all .28s $transition['linear-out-fast-in'];
+
+        // Prefix
+        .input--prefix
+        input, textarea
+        .input--suffix
+            display: block
+            flex: 0 auto
+            border: none
+            padding: .25em 0
+            font: inherit
+
+        .input--prefix
+        .input--suffix
+            opacity: .54
+
+        .input--prefix
+            margin-right: .25em
+
+        .input--suffix
+            margin-left: .25em
+
+        input, textarea
+            flex: 1
+
+        // Label
+        .input--label
+            z-index: 2
+            position: absolute
+            left: 0
+            width: 100%
+            top: .25em
+            text-transform: capitalize
+            transition all .4s $transition['fast-in-fast-out'];
+            pointer-events: none
+            color: rgba(#000, 54%)
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+            transform-origin 0 100%
+
+        // Inputs
+        textarea
+            min-height: 2em
+            resize: vertical
+
+    // Alignment
+    &.input--center
+        input, textarea, .input--label
+            text-align: center
+            transform-origin: 50% 100%
+
+    &.input--right
+        input, textarea, .input--label
+            text-align: right
+            transform-origin: 100% 0
+
+    // Icons
+    .input--prepend-icon
+    .input--append-icon
+        font-size: 1.5em
+        vertical-align: baseline
+        transition all .3s $transition['fast-in-fast-out']
+
+    // Prepend
+    .input--prepend-icon
+        float: left
+        margin-right: .5em
+
+    // Append
+    .input--append-icon
+        float: right
+        margin-left: .5em
+        opacity: .54
+        cursor: pointer
+
+    // Counter
+    .input--counter
+        position: relative
+        display: inline-block
+        float: right
+        font-size: .8em
+        padding: .25em 0
+
+    for $style, $color in $ms-theme
+        &.{$style}
+
+            $color = $color['base'];
+
+            // Bottom Bar
+            .input--container:after
+                border-bottom-color: $color
+
+            // Focused
+            &.input--focused
+
+                // Icons
+                .input--prepend-icon
+                    color: $color;
+
+                // Change Label Color
+                .input--label
+                    color: $color;

@@ -1,4 +1,4 @@
-import Icon from './icon.vue';
+import Icon from './icon';
 
 export default function install(Vue, options) {
     const opt = options.icon;

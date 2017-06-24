@@ -1,20 +1,26 @@
 <template>
     <ms-container>
+        <h1>Form</h1>
+        <ms-text-field prepend-icon="phone" append-icon="eye" info label="Label Text" id="test"></ms-text-field>
+
+        <pre v-html="test"></pre>
+
+        <hr>
+
         <h1>Botões</h1>
-        <ms-btn v-for="style, i in styles" v-bind="{[style]: true}" :key="i">{{ style }}</ms-btn>
+        <ms-btn v-for="(style, i) in styles" v-bind="{[style]: true}" :key="i">{{ style }}</ms-btn>
         <hr>
         <h2>Sizes</h2>
-        <ms-btn v-for="size, i in sizes" v-bind="{[size]: true}" :key="i" primary>Button {{ size }}</ms-btn>
+        <ms-btn v-for="(size, i) in sizes" v-bind="{[size]: true}" :key="i" primary>Button {{ size }}</ms-btn>
         <hr>
         <h2>Prepend Icons</h2>
-        <ms-btn v-for="icon, style, i in icons" v-bind="{[style]: true, prependIcon: icon}" :key="i">{{ style }}</ms-btn>
+        <ms-btn v-for="(icon, style, i) in icons" v-bind="{[style]: true, prependIcon: icon}" :key="i">{{ style }}</ms-btn>
     
         <h2>Append Icons</h2>
-        <ms-btn v-for="icon, style, i in icons" v-bind="{[style]: true, appendIcon: icon}" :key="i">{{ style }}</ms-btn>
+        <ms-btn v-for="(icon, style, i) in icons" v-bind="{[style]: true, appendIcon: icon}" :key="i">{{ style }}</ms-btn>
         <hr>
         <h2>Flat</h2>
-        <ms-btn v-for="style, i in styles" v-bind="{[style]: true}" flat :key="i">{{ style }}</ms-btn>
-    
+        <ms-btn v-for="(style, i) in styles" v-bind="{[style]: true}" flat :key="i">{{ style }}</ms-btn>
     </ms-container>
 </template>
 
@@ -45,8 +51,14 @@
                     info   : 'information',
                     warning: 'alert',
                     error  : 'alert-circle'
-                }
+                },
+                test: ''
             };
+        },
+        watch: {
+            test(val) {
+                console.log(val);
+            }
         },
         methods: {
             alert(msg) {
