@@ -1,11 +1,32 @@
 <template>
     <ms-container>
         <h1>Form</h1>
-        <ms-text-field prepend-icon="phone" append-icon="eye" info label="Label Text" id="test"></ms-text-field>
-
-        <pre v-html="test"></pre>
+        <ms-text-field 
+            v-for="(style, i) in styles" 
+            v-bind="{[style]: true}"
+            :key="i"
+            type="password"
+            required
+            :label="`Input ${style}`"
+            help="Escolha uma senha segura, e mantenha somente consigo mesmo."
+            prepend-icon="lock"
+            append-icon="eye"
+            
+        ></ms-text-field>
 
         <hr>
+
+        <div v-html="html"></div>
+        <ms-text-field
+            required
+            multiline
+            rows="3"
+            info
+            label="HTML"
+            help="Escreva o seu código HTML aqui."
+            prepend-icon="code-tags"
+            v-model="html"
+        ></ms-text-field>
 
         <h1>Botões</h1>
         <ms-btn v-for="(style, i) in styles" v-bind="{[style]: true}" :key="i">{{ style }}</ms-btn>
@@ -35,6 +56,7 @@
     hr
         margin 1em
         border 1px solid #CCC
+
 </style>
 
 <script>
@@ -52,7 +74,7 @@
                     warning: 'alert',
                     error  : 'alert-circle'
                 },
-                test: ''
+                html: '<h1>Olá Mundo!</h1>'
             };
         },
         watch: {
@@ -63,6 +85,9 @@
         methods: {
             alert(msg) {
                 alert(msg)
+            },
+            tglPwd(){
+                this.on = !this.on;
             }
         }
     };
