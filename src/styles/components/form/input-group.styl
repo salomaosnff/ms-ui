@@ -1,72 +1,99 @@
 .input-group
     $grey = $ms-colors['grey']['l1'];
+    $grey_dark = $ms-colors['grey']['b'];
     $primary = $ms-theme['primary']['base']
     $error = $ms-theme['error']['base']
+    $trans = $transition['swing']
 
-    display block
+    display flex
     width 100%
-    margin 1.618em 0
+    margin 1.5em 0
+    flex-wrap: wrap
+    flex-direction: row
+
+
+    input, textarea
+        width 100%
+        display block
+        border none
+        background none
+        font inherit
+        margin 0
+
+    input, textarea
+    .input--prefix
+    .input--suffix
+        padding .25em 0
+        min-height 1.5em
+
+    input
+        flex 1
+
+    textarea
+        resize vertical
+
+    label
+        position absolute
+        top .25em
+        left 0
+        color $grey_dark
+        transform-origin 0 100%
+        transition all .21s $trans;
+        user-select: none
+        z-index: 4
+
+    .input
+        &__
+            &append-icon
+            &prepend-icon
+                flex 0 auto
+                font-size: 1.5em
+                min-width 1.5em
+
+            &prepend-icon
+                opacity .5
+                text-align left
+
+            &append-icon
+                opacity .25
+                text-align right
+
+        &--
+            &prefix
+            &suffix
+                opacity 0
+                transition: all .21s $trans
+
+            &prefix
+                margin-right .25em
+            &suffix
+                margin-left .25em
 
     &__input
-        display: flex
+        display flex
+        flex-wrap: wrap
         flex-direction: row
-        flex-wrap: nowrap
         position relative
-        width 100%
-
-        .input
-            &__append-icon
-            &__prepend-icon
-                flex 0 1.5em
-                font-size: 1.5em
-                vertical-align: bottom
-
-            &__prepend-icon
-               position relative
-               top .05em
-               opacity .5
-
-            &__append-icon
-                position absolute
-                right 0
-                opacity .25
-
-        input, textarea
-            flex 0 100%
-            width 100%
-            border none
-            background none
-            border-bottom .08em solid $grey;
-            font inherit
-            margin 0
-            padding .15em 0
-            min-height 1.8em
-
-        textarea
-            resize: vertical
-
-        label
-            position absolute
-            top .25em
-            left 2.185em
-            color rgba(#000, 50%)
-            transform-origin 0 100%
-            transition all .21s $transition['swing'];
-            user-select: none
+        flex 1
 
     &__details
+        display block
         padding .25em 0 0 0
-        margin 0 0 0 2.685em
+        margin 0
         font-size: .8em
         min-height: 1.618em
         position relative
+        flex 0 auto
+        width 100%
+        border-top .08em solid $grey;
+        
         &:before
             content ''
             display block
             position absolute
             top -.08em
             left 0
-            transition all .21s $transition['swing'];
+            transition all .21s $trans;
             border-top .19em solid $primary;
             width 0
             height 0
@@ -75,9 +102,15 @@
             color $error
 
     &--focused, &--dirty
-        & ^[0]__input
-            label
-                transform scale(.8) translate(0, -150%)
+        & ^[0]
+            &__input
+                label
+                    transform scale(.8) translate(0, -150%)
+        .input
+            &--prefix
+            &--suffix
+                opacity .5
+            
 
     // Required
     &--required
@@ -107,12 +140,11 @@
             label
                 color $error !important
 
-            input, textarea
-                border-color $error !important
-
-
-        & ^[0]__details:before
+        & ^[0]__details
             border-color $error
+
+            &:before
+                border-color $error
 
     for $name, $color in $ms-theme
         $ignore = 'primary' 'error'

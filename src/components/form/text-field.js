@@ -61,6 +61,15 @@ export default {
                 this.lazyValue = val;
             }
         },
+        inputRows() {
+            if(!this.multiline) return false;
+            if(!this.autogrow || !this.lazyValue) return this.rows;
+            
+            let rows = this.lazyValue.match(/[\n]/gm);
+            rows = rows ? rows.length + 1 : 1;
+
+            return rows > this.rows ? rows : this.rows;
+        },
         counter() {
             return this.inputValue ? this.inputValue.length : 0;
         },
@@ -84,9 +93,9 @@ export default {
         }
     },
     mounted () {
-        this.calcHeight();
         this.autofocus && this.focus();
     },
+
     methods: {
         click() {
             this.tabFocused = false;
@@ -104,34 +113,23 @@ export default {
         onInput(e) {
             this.inputValue = e.target.value;
             this.tabFocused = false;
-
-            this.calcHeight();
+            this.validate();
         },
         blur(e) {
             this.focused = false;
             this.tabFocused = false;
             this.$nextTick(() => (this.focused = false));
             this.$refs.input.blur();
-            this.validate();
             this.$emit('blur', e);
         },
-        calcHeight() {
-            if(!this.multiline || !this.autogrow) return;
-
-            const height = this.$refs.input.scrollHeight;
-            const minHeight = this.rows * 24;
-            return this.inputHeight = height < minHeight ? minHeight : height;
-        },
+        
         genInput() {
+
             // Input Tag Name
             const tagName = this.multiline ? 'textarea' : 'input';
 
             // Input data
             const data = {
-                style: {
-                    'height': this.inputHeight && `${this.inputHeight}px`
-                },
-
                 domProps: {
                     id: this.id || this._uid,
                     value: this.lazyValue,
@@ -143,7 +141,6 @@ export default {
                     tabindex: this.tabindex,
                     readonly: this.readonly,
                     placeholder: this.hint,
-                    rows: this.multiline ? this.rows : false
                 },
 
                 on: {
@@ -168,7 +165,7 @@ export default {
 
             // Is a Textarea?
             if (this.multiline) {
-                data.domProps.rows = this.rows
+                data.domProps.rows = this.inputRows
             } else {
                 data.domProps.type = this.type
             }
@@ -176,11 +173,18 @@ export default {
             const children = [this.$createElement(tagName, data)];
 
             // Label
-            this.label && children.push(this.genLabel());
+            this.label && children.unshift(this.genLabel());
 
             // Prefix and Suffix
-            this.prefix && children.unshift(this.genFix('prefix'))
-            this.suffix && children.push(this.genFix('suffix'))
+            if(!this.multiline){
+                this.prefix && children.unshift(this.genFix('prefix'))
+                this.suffix && children.push(this.genFix('suffix'))
+            }
+           
+            // Icons
+            this.appendIcon && children.push(this.genIcon('append'));
+
+            children.push(this.genDetails());
 
             return children;
         },
@@ -208,19 +212,10 @@ export default {
                 }
             }, this[`${type}Icon`]);
         },
-        genPrefix() {
-            return this.$createElement('span', {class: 'input--prefix'}, this.prefix);
-        },
-        genSuffix() {
-            return this.$createElement('span', {class: 'input--suffix'}, this.suffix);
+        genFix(type) {
+            return this.$createElement('span', {class: `input--${type}`}, this[type]);
         }
     },
-    data() {
-        return {
-            inputHeight: null
-        }
-    },
-
     render(create) {
         return this.genInputGroup(this.genInput(), {attrs: {tabindex: -1}});
     }

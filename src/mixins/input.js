@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import toggleable from './toggleable';
 import $validators from '../_validators'
 
 export default {
@@ -36,11 +35,11 @@ export default {
     },
     watch: {
         errors(){
-            this.setErrors(this.errors);
+            this.setError(this.errors);
         }
     },
     mounted(){
-        this.setErrors(this.errors);
+        this.setError(this.errors);
     },
     computed: {
         inputGroupClasses(){
@@ -85,7 +84,7 @@ export default {
     },
     methods: {
         toggle(){},
-        setErrors(errors){
+        setError(errors){
             errors = _.isArray(errors) ? errors : [errors];
             this.errorBucket = _.union(this.errorBucket, errors);
         },
@@ -94,7 +93,9 @@ export default {
         },
         validate(){
             this.clearErrors();
-            let validators = this.rules.filter(r => ['function', 'string'].includes(typeof r) || r instanceof RegExp);
+            let validators = this.rules.filter(
+                r => ['function', 'string'].includes(typeof r) || r instanceof RegExp
+            );
             
             if(this.required) validators = _.union(['required'], validators);
 
@@ -106,8 +107,23 @@ export default {
 
             validators.forEach(rule => {
                 const valid = rule(this.lazyValue, this.setErrors);
-                typeof valid === 'string' && this.setErrors(valid);
+                typeof valid === 'string' && this.setError(valid);
             });
+        },
+        genDetails(){
+            let childrens = [];
+
+            if(this.counter){
+                childrens.push(
+                    this.$createElement('div', {
+                        class: 'input-group__counter'
+                    }, this.count)
+                )
+            }
+
+            childrens.push(this.genMessages());
+
+            return this.$createElement('div', {class: 'input-group__details'}, childrens);
         },
         genMessages () {
             let messages = [];
@@ -154,8 +170,6 @@ export default {
         
         genInputGroup(input, data){
             const children = []
-            const wrapperChildren = []
-            const detailsChildren = []
 
             data = Object.assign({}, {
                 'class': this.inputGroupClasses,
@@ -177,30 +191,13 @@ export default {
                 }
             }, data);
 
-            wrapperChildren.push(input);
-
-            if (this.prependIcon) {
-                wrapperChildren.unshift(this.genIcon('prepend'));
-            }
-
-            if (this.appendIcon) {
-                wrapperChildren.push(this.genIcon('append'));
-            }
-
             children.push(
                 this.$createElement('div', {
                     'class': 'input-group__input'
-                }, wrapperChildren)
-            )
+                }, [input])
+            );
 
-            detailsChildren.push(this.genMessages())
-            this.counter && detailsChildren.push(this.genCounter())
-
-            children.push(
-                this.$createElement('div', {
-                    'class': 'input-group__details'
-                }, detailsChildren)
-            )
+            this.prependIcon && children.unshift(this.genIcon('prepend'));
 
             return this.$createElement('div', data, children)
         }

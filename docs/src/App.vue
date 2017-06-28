@@ -5,12 +5,15 @@
             v-for="(style, i) in styles" 
             v-bind="{[style]: true}"
             :key="i"
-            type="password"
             required
-            :label="`Input ${style}`"
-            help="Escolha uma senha segura, e mantenha somente consigo mesmo."
+            :label="`Textarea ${style}`"
+            help="Escreva uma mensagem aqui"
             prepend-icon="lock"
-            append-icon="eye"
+            prefix="prefixo_"
+            suffix="@gmail.com"
+            autogrow
+            rows="3"
+            counter
             
         ></ms-text-field>
 
