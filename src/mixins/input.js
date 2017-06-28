@@ -27,6 +27,7 @@ export default {
     },
     data() {
         return {
+            inputId: null,
             errorBucket: [],
             tabFocused: true,
             focused: false,
@@ -81,6 +82,9 @@ export default {
         allErrors(){
             return this.errorBucket.filter(error => typeof error === 'string');
         }
+    },
+    created(){
+        this.inputId = this.id || 'input_' + this._uid;
     },
     methods: {
         toggle(){},
@@ -160,8 +164,9 @@ export default {
         genLabel() {
 
             const data = {
+                class: 'input__label',
                 attrs: {
-                    for: this.id || this._uid
+                    for: this.inputId
                 }
             }
 

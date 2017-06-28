@@ -25,6 +25,8 @@
     .input--suffix
         padding .25em 0
         min-height 1.5em
+        opacity .5
+        cursor: text
 
     input
         flex 1
@@ -32,7 +34,7 @@
     textarea
         resize vertical
 
-    label
+    .input__label
         position absolute
         top .25em
         left 0
@@ -42,6 +44,11 @@
         user-select: none
         z-index: 4
 
+        & ~ .input--
+            &prefix
+            &suffix
+                opacity 0
+                transition: all .21s $trans
     .input
         &__
             &append-icon
@@ -59,11 +66,6 @@
                 text-align right
 
         &--
-            &prefix
-            &suffix
-                opacity 0
-                transition: all .21s $trans
-
             &prefix
                 margin-right .25em
             &suffix
@@ -102,34 +104,35 @@
             color $error
 
     &--focused, &--dirty
-        & ^[0]
-            &__input
-                label
-                    transform scale(.8) translate(0, -150%)
-        .input
-            &--prefix
-            &--suffix
-                opacity .5
+        .input__label
+            transform scale(.8) translate(0, -150%)
+            & ~ .input
+                &--prefix
+                &--suffix
+                    opacity .5
             
 
     // Required
     &--required
-        & ^[0]__input label:after
+        & ^[0]__input .input__label:after
             content "*"
             color $error
 
     // Focus
     &--focused
-        &  ^[0]__input
-            label
-                color $primary
+        input, textarea
+            opacity 1
 
-            .input
-                &__prepend-icon
-                    color $primary
-                    opacity 1
-                &__append-icon
-                    opacity .5
+        .input__label
+            color $primary
+
+        .input
+            &__prepend-icon
+                color $primary
+                opacity 1
+
+            &__append-icon
+                opacity .5
 
         & ^[0]__details:before
             width 100%
@@ -137,7 +140,7 @@
     &--has-error
         &  ^[0]__input
             
-            label
+            .input__label
                 color $error !important
 
         & ^[0]__details
@@ -157,7 +160,7 @@
 
             &^[0]--focused
                 &  ^[0]__input
-                        label
+                        .input__label
                         .input__prepend-icon
                             color $color
 

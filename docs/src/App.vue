@@ -2,19 +2,18 @@
     <ms-container>
         <h1>Form</h1>
         <ms-text-field 
-            v-for="(style, i) in styles" 
-            v-bind="{[style]: true}"
-            :key="i"
             required
-            :label="`Textarea ${style}`"
-            help="Escreva uma mensagem aqui"
-            prepend-icon="lock"
-            prefix="prefixo_"
-            suffix="@gmail.com"
-            autogrow
-            rows="3"
-            counter
-            
+            label="Id do perfil"
+            help="Encontrado no fim da URL"
+            prepend-icon="account-network"
+            prefix="https://memeshare.com.br/profile/"
+        ></ms-text-field>
+        <ms-text-field 
+            required
+            help="Seu domínio"
+            prepend-icon="web"
+            prefix="www."
+            suffix=".com.br"
         ></ms-text-field>
 
         <hr>

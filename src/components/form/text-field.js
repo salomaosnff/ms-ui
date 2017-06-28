@@ -92,6 +92,7 @@ export default {
             this.errorBucket = val;
         }
     },
+    
     mounted () {
         this.autofocus && this.focus();
     },
@@ -131,7 +132,7 @@ export default {
             // Input data
             const data = {
                 domProps: {
-                    id: this.id || this._uid,
+                    id: this.inputId,
                     value: this.lazyValue,
                     disabled: this.disabled,
                     autofocus: this.autofocus
@@ -172,8 +173,7 @@ export default {
 
             const children = [this.$createElement(tagName, data)];
 
-            // Label
-            this.label && children.unshift(this.genLabel());
+            
 
             // Prefix and Suffix
             if(!this.multiline){
@@ -183,6 +183,9 @@ export default {
            
             // Icons
             this.appendIcon && children.push(this.genIcon('append'));
+
+            // Label
+            this.label && children.unshift(this.genLabel());
 
             children.push(this.genDetails());
 
@@ -213,7 +216,12 @@ export default {
             }, this[`${type}Icon`]);
         },
         genFix(type) {
-            return this.$createElement('span', {class: `input--${type}`}, this[type]);
+            return this.$createElement('label', {
+                class: `input--${type}`,
+                attrs: {
+                    for: this.inputId
+                }
+            }, this[type]);
         }
     },
     render(create) {
