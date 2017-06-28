@@ -35,6 +35,9 @@ export default {
         }
     },
     watch: {
+        value() {
+            this.lazyValue = this.value;
+        },
         errors(){
             this.setError(this.errors);
         }
@@ -117,13 +120,7 @@ export default {
         genDetails(){
             let childrens = [];
 
-            if(this.counter){
-                childrens.push(
-                    this.$createElement('div', {
-                        class: 'input-group__counter'
-                    }, this.count)
-                )
-            }
+            this.counter && childrens.push(this.genCounter());
 
             childrens.push(this.genMessages());
 

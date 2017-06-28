@@ -27,6 +27,7 @@ export default {
         prependIconCb: Function,
         appendIcon: String,
         appendIconCb: Function,
+        counter: Boolean,
         counterMin: [String, Number],
         counterMax: [String, Number]
     },
@@ -50,7 +51,7 @@ export default {
         },
         inputValue: {
             get() {
-                return this.value;
+                return this.lazyValue;
             },
             set(val) {
 
@@ -70,26 +71,16 @@ export default {
 
             return rows > this.rows ? rows : this.rows;
         },
-        counter() {
-            return this.inputValue ? this.inputValue.length : 0;
+        count() {
+            const count = this.inputValue ? this.inputValue.length : 0;
+            return this.counterMax ? `${count}/${this.counterMax}` : count;
         },
-
-        // Messages and Errors of input
         inputMessages(){
             const errors   = this.allErrors.map(e => ({type: 'error', text: e}));
             const messages = [];
 
             if(this.help) messages.push({type: 'help', text: this.help});
             return messages.concat(errors);
-        }
-    },
-    watch: {
-        value() {
-            this.lazyValue = this.value;
-            this.calcHeight();
-        },
-        errors(val){
-            this.errorBucket = val;
         }
     },
     
@@ -107,8 +98,14 @@ export default {
             this.$emit('focus', e);
         },
         keyup(e) {
-            if(e.keyCode === 9) {
-                this.tabFocused = true;
+            switch(e.keyCode){
+                case 9:
+                    this.tabFocused = true;
+                    break;
+                case 13:
+                    this.toggle();
+                    break;
+                default:break;
             }
         },
         onInput(e) {
@@ -123,7 +120,6 @@ export default {
             this.$refs.input.blur();
             this.$emit('blur', e);
         },
-        
         genInput() {
 
             // Input Tag Name
@@ -156,6 +152,7 @@ export default {
             // Set Input Id
             if(this.autocomplete) data.domProps.autocomplete = true;
             if(this.name) data.attrs.name = this.name;
+            if(this.minlen) data.attrs.minLength = this.minlen;
             if(this.maxlen) data.attrs.maxlength = this.maxlen;
             if(this.step) data.attrs.step = this.step;
 
@@ -194,10 +191,14 @@ export default {
         counterIsValid(){
             const val = (this.inputValue && this.inputValue.toString() || '')
 
-            return (
-                !this.counter ||
-                (val.length >= this.counterMin && val.length <= this.counterMax)
-            )
+            if(this.counterMin || this.counterMin){
+                return (
+                    val.length >= this.counterMin && 
+                    val.length <= this.counterMax
+                )
+            }
+
+            return true
         },
         genCounter () {
             return this.$createElement('div', {

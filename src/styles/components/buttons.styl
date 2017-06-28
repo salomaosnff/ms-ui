@@ -15,6 +15,7 @@
     margin .5em
     cursor pointer
     text-align center
+    white-space nowrap
 
     & + .btn
         margin-left: .25em
@@ -33,7 +34,7 @@
 
 
     // Disabled
-    &:disabled, &-disabled
+    &:disabled, &--disabled
         $disabled = $ms-colors['grey'];
 
         pointer-events: none
@@ -49,12 +50,17 @@
     &:focus:not(:active)
         ms-elevation 10
 
+    &--block
+        display block
+        width 100%
+        
     // Raised
     &--raised
         ms-elevation 1
 
         &:active
             ms-elevation 6
+
 
     // Sizes
     &--xs

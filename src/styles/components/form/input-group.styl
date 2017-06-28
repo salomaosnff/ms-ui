@@ -1,6 +1,7 @@
 .input-group
-    $grey = $ms-colors['grey']['l1'];
-    $grey_dark = $ms-colors['grey']['b'];
+    $grey = $ms-colors['grey']['b'];
+    $grey_light = $ms-colors['grey']['l1'];
+    $grey_dark = $ms-colors['grey']['d2'];
     $primary = $ms-theme['primary']['base']
     $error = $ms-theme['error']['base']
     $trans = $transition['swing']
@@ -8,37 +9,39 @@
     display flex
     width 100%
     margin 1.5em 0
-    flex-wrap: wrap
     flex-direction: row
 
-
     input, textarea
-        width 100%
+        flex 1
         display block
         border none
         background none
         font inherit
         margin 0
+        color $grey_dark
 
     input, textarea
     .input--prefix
     .input--suffix
         padding .25em 0
         min-height 1.5em
-        opacity .5
         cursor: text
 
-    input
-        flex 1
+    .input--
+        &prefix
+        &suffix
+            opacity .5
+            transition all .21s $trans
 
     textarea
         resize vertical
+        flex 0 100%
 
     .input__label
         position absolute
         top .25em
         left 0
-        color $grey_dark
+        color $grey
         transform-origin 0 100%
         transition all .21s $trans;
         user-select: none
@@ -56,10 +59,12 @@
                 flex 0 auto
                 font-size: 1.5em
                 min-width 1.5em
+                color #000
 
             &prepend-icon
                 opacity .5
                 text-align left
+                padding .08em 0 0 0
 
             &append-icon
                 opacity .25
@@ -73,8 +78,7 @@
 
     &__input
         display flex
-        flex-wrap: wrap
-        flex-direction: row
+        flex-flow: row wrap;
         position relative
         flex 1
 
@@ -85,7 +89,8 @@
         font-size: .8em
         min-height: 1.618em
         position relative
-        flex 0 auto
+        flex 1
+        flex-basis: 100%;
         width 100%
         border-top .08em solid $grey;
         
@@ -102,6 +107,13 @@
 
         .input-group__error
             color $error
+
+    &__counter
+        float right
+        opacity 0
+        &--error
+            color $error
+            opacity 1
 
     &--focused, &--dirty
         .input__label
@@ -121,27 +133,27 @@
     // Focus
     &--focused
         input, textarea
-            opacity 1
+            color #000
 
-        .input__label
-            color $primary
-
-        .input
-            &__prepend-icon
+        .input__
+            &label
+                color $primary
+            &prepend-icon
                 color $primary
                 opacity 1
 
-            &__append-icon
+            &append-icon
                 opacity .5
 
-        & ^[0]__details:before
-            width 100%
+        & ^[0]
+            &__details:before
+                width 100%
+            &__counter
+                opacity 1
     // Error
     &--has-error
-        &  ^[0]__input
-            
-            .input__label
-                color $error !important
+        .input__label
+            color $error !important
 
         & ^[0]__details
             border-color $error
@@ -159,10 +171,11 @@
                 border-color $color
 
             &^[0]--focused
-                &  ^[0]__input
-                        .input__label
-                        .input__prepend-icon
-                            color $color
+                .input__
+                    &label
+                    &prepend-icon
+                        color $color
+                        opacity 1
 
                 
 
