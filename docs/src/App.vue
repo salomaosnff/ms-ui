@@ -27,6 +27,33 @@
                 </tr>
             </tbody>
         </table>
+        <h1>Buttons Light</h1>
+        <table class="dark">
+            <thead>
+                <tr>
+                    <th>Style</th>
+                    <th>Raised</th>
+                    <th>Flat</th>
+                    <th>Extra Small</th>
+                    <th>Small</th>
+                    <th>Large</th>
+                    <th>Prepend Icon</th>
+                    <th>Append Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(style, i) in styles" :key="i">
+                    <td>{{style}}</td>
+                    <td><ms-btn light v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light flat v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light xs v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light sm v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light lg v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light prepend-icon="account" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    <td><ms-btn light append-icon="lock" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                </tr>
+            </tbody>
+        </table>
         <h1>Text Fields</h1>
         <table>
             <thead>
@@ -36,7 +63,6 @@
                     <th>Label</th>
                     <th>Prepend Icon</th>
                     <th>Append Icon</th>
-                    <th>Errors</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,74 +91,54 @@
                             v-bind="{[style]:true}"
                         ></ms-text-field>
                     </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Textfields Light</h2>
+        <table class="dark">
+            <thead>
+                <tr>
+                    <th>Style</th>
+                    <th>Default</th>
+                    <th>Label</th>
+                    <th>Prepend Icon</th>
+                    <th>Append Icon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(style, i) in styles" :key="i">
+                    <td>{{style}}</td>
                     <td>
                         <ms-text-field 
-                            :errors="['Validation message']"
+                            light
+                            v-bind="{[style]:true}"
+                        ></ms-text-field>
+                    </td>
+                    <td>
+                        <ms-text-field 
+                            light
+                            :label="`Input ${style}`" 
+                            v-bind="{[style]:true}"
+                        ></ms-text-field>
+                    </td>
+                    <td>
+                        <ms-text-field 
+                            light
+                            prepend-icon="pencil" 
+                            v-bind="{[style]:true}"
+                        ></ms-text-field>
+                    </td>
+                    <td>
+                        <ms-text-field 
+                            light
+                            append-icon="eye" 
                             v-bind="{[style]:true}"
                         ></ms-text-field>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <ms-text-field 
-            label="Id do perfil"
-            append-icon="lock"
-            prefix="https://memeshare.com.br/profile/"
-            id="teste_de_id"
-        ></ms-text-field>
-        <ms-text-field 
-            required
-            help="Seu domínio"
-            prepend-icon="web"
-            prefix="www."
-            suffix=".com.br"
-        ></ms-text-field>
-        <ms-text-field 
-            required
-            label="Telefone"
-            prepend-icon="phone"
-            prefix="+55"
-            counter
-        ></ms-text-field>
-
-        <ms-text-field 
-            label="Text"
-            prefix="prefix"
-            suffix="suffix"
-            :append-icon="i ? 'lock-open' : 'lock'"
-            :append-icon-cb="() => i = !i"
-            :disabled="i"
-        ></ms-text-field>
-
-        <hr>
-
-        <div v-html="html"></div>
-        <ms-text-field
-            required
-            multiline
-            rows="3"
-            info
-            label="HTML"
-            help="Escreva o seu código HTML aqui."
-            prepend-icon="code-tags"
-            v-model="html"
-        ></ms-text-field>
-
-        <h1>Botões</h1>
-        <ms-btn v-for="(style, i) in styles" v-bind="{[style]: true}" :key="i">{{ style }}</ms-btn>
-        <hr>
-        <h2>Sizes</h2>
-        <ms-btn v-for="(size, i) in sizes" v-bind="{[size]: true}" :key="i" primary>Button {{ size }}</ms-btn>
-        <hr>
-        <h2>Prepend Icons</h2>
-        <ms-btn v-for="(icon, style, i) in icons" v-bind="{[style]: true, prependIcon: icon}" :key="i">{{ style }}</ms-btn>
-    
-        <h2>Append Icons</h2>
-        <ms-btn v-for="(icon, style, i) in icons" v-bind="{[style]: true, appendIcon: icon}" :key="i">{{ style }}</ms-btn>
-        <hr>
-        <h2>Flat</h2>
-        <ms-btn v-for="(style, i) in styles" v-bind="{[style]: true}" flat :key="i">{{ style }}</ms-btn>
-    </ms-container>
+</ms-container>
 </template>
 
 <style lang="stylus">
@@ -151,6 +157,8 @@
 
     table
         border-spacing 0
+        width 100%
+        text-align center
 
         thead th
             background $primary
@@ -161,6 +169,9 @@
                 td
                     border 1px solid rgba($primary, 18%)
                     padding 0 .5em
+    .dark
+        color #EEEEEE
+        background #333333
 
 
 </style>

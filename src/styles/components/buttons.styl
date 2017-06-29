@@ -1,5 +1,7 @@
 .btn
     $default = $ms-theme['default'];
+    $dark = $ms-colors['grey']['d2']
+    $dark-hover = $ms-colors['grey']['d1'];
 
     ms-elevation-transition()
     display inline-block
@@ -70,18 +72,6 @@
     &--lg
         font-size: 1.2em
 
-    // Colors
-    for $name, $color in $ms-theme
-        &.{$name}
-            background $color['base'];
-            color rgba($color['sec'], 90%);
-
-            &:hover
-                background $color['hover'];
-
-            &:active
-                background $color['active'];
-
     // Flat
     &--flat
         ms-elevation 0
@@ -93,3 +83,26 @@
 
         &:active
             background: $default['active'];
+
+    &--light
+        background $dark
+        color rgba(#FFF, 82%)
+
+        &:hover
+            background $dark-hover
+        &^[0]--flat
+            background none
+            &:hover
+                background rgba($dark-hover, 25%)
+
+    // Colors
+    for $name, $color in $ms-theme
+        &.{$name}
+            background $color['base'];
+            color rgba($color['sec'], 90%);
+
+            &:hover
+                background $color['hover'];
+
+            &:active
+                background $color['active'];

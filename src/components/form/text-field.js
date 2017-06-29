@@ -1,8 +1,9 @@
-import input from '../../mixins/input';
-import contextuable from '../../mixins/contextuable';
+import Input from '../../mixins/input';
+import Themeable from '../../mixins/themeable'
+import Contextuable from '../../mixins/contextuable';
 
 export default {
-    mixins: [input, contextuable],
+    mixins: [Input, Themeable, Contextuable],
     props: {
         tabindex: [Number, String],
         multiline: Boolean,

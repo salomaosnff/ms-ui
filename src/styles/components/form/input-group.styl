@@ -1,6 +1,6 @@
 .input-group
     $grey = $ms-colors['grey']['b'];
-    $grey_light = $ms-colors['grey']['l1'];
+    $grey_light = $ms-colors['grey']['l2'];
     $grey_dark = $ms-colors['grey']['d2'];
     $primary = $ms-theme['primary']['base']
     $error = $ms-theme['error']['base']
@@ -10,15 +10,16 @@
     flex-flow: row nowrap
     width 100%
     margin 1.5em 0
+    color #000
+    text-align left
 
     input, textarea
         flex 1
         display block
         border none
         background none
-        font inherit
         margin 0
-        color $grey_dark
+        text-align inherit
 
     input, textarea
     .input--prefix
@@ -26,6 +27,8 @@
         padding .25em 0
         min-height 1.5em
         cursor: text
+        font inherit
+        color currentColor
 
     .input--
         &prefix
@@ -61,7 +64,8 @@
             &prepend-icon
                 flex 0 auto
                 font-size: 1.5em
-                color #000
+                color currentColor
+                opacity: .5
 
             &icon-cb
                 cursor: pointer
@@ -71,12 +75,10 @@
                     opacity: .5
 
             &prepend-icon
-                opacity .5
                 text-align left
                 padding .08em .25em 0 0
 
             &append-icon
-                opacity .25
                 text-align right
                 padding-left: .25em
 
@@ -90,12 +92,14 @@
         display flex
         flex-flow: row wrap
         flex 1
+        color currentColor
 
     &__input
         display: flex
         flex-flow: row nowrap
         position: relative
         flex: 1
+        color currentColor
 
     &__details
         display block
@@ -136,8 +140,12 @@
             & ~ .input
                 &--prefix
                 &--suffix
-                    opacity .5
+                    opacity .75
             
+
+
+        
+
 
     // Disabled
     &--disabled
@@ -169,20 +177,10 @@
 
     // Alignment
     &--center
-        .input__label
-            transform-origin: 50% 100%
-            text-align: center
-
-        input, textarea
-            text-align: center
+        text-align center
         
     &--right
-        .input__label
-            transform-origin: 100% 100%
-            text-align: right
-
-        input, textarea
-            text-align: right
+        text-align right
 
     // Required
     &--required
@@ -192,8 +190,6 @@
 
     // Focus
     &--focused
-        input, textarea
-            color #000
 
         .input__
             &label
@@ -206,11 +202,15 @@
                 opacity .5
 
         & ^[0]
+            color #000
+
             &__details:before
                 width 100%
             &__counter
                 opacity 1
+    
     // Error
+    
     &--has-error
         .input__label
             color $error !important
@@ -221,6 +221,14 @@
             &:before
                 border-color $error
 
+    
+    &--light
+        color $grey
+
+        &^[0]--focused
+            color #FFF
+                
+    // Styles
     for $name, $color in $ms-theme
         $ignore = 'primary' 'error'
         $color = $color['base'];

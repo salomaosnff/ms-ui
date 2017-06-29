@@ -52,8 +52,7 @@ export default {
                 'input-group--focused': !this.disabled && this.focused,
                 'input-group--tab-focused': !this.disabled && this.tabFocused,
                 'input-group--disabled': this.disabled,
-                'input-group--light': this.light || !this.dark,
-                'input-group--dark': !this.light && this.dark,
+                'input-group--light': this.light,
                 'input-group--has-error': this.hasError,
                 'input-group--required': this.required
             }, this.classes);
