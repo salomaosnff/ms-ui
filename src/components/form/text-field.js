@@ -34,8 +34,8 @@ export default {
     computed: {
         classes() {
             return {
-                'input--center': this.center,
-                'input--right': this.right,
+                'input-group--center': this.center,
+                'input-group--right': this.right,
 
                 'input-group--primary': this.primary,
                 'input-group--info': this.info,
@@ -116,7 +116,6 @@ export default {
         blur(e) {
             this.focused = false;
             this.tabFocused = false;
-            this.$nextTick(() => (this.focused = false));
             this.$refs.input.blur();
             this.$emit('blur', e);
         },
@@ -184,8 +183,6 @@ export default {
             // Label
             this.label && children.unshift(this.genLabel());
 
-            children.push(this.genDetails());
-
             return children;
         },
         counterIsValid(){
@@ -207,14 +204,6 @@ export default {
                 'input-group__counter--error': !this.counterIsValid()
                 }
             }, this.count)
-        },
-        genIcon(type){
-            return this.$createElement('ms-icon', {
-                class: `input__${type}-icon`,
-                on: {
-                    click: this[`${type}IconCb`] || (() => this.focus()),
-                }
-            }, this[`${type}Icon`]);
         },
         genFix(type) {
             return this.$createElement('label', {

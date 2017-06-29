@@ -1,10 +1,11 @@
+import BindEvents from '../../mixins/bindEvents'
 import Contextualable from '../../mixins/contextuable'
 import Toggleable from '../../mixins/toggleable'
 import GenerateRouteLink from '../../mixins/route-link'
 import Themeable from '../../mixins/themeable'
 
 export default {
-  mixins: [Contextualable, GenerateRouteLink, Toggleable, Themeable],
+  mixins: [BindEvents, Contextualable, GenerateRouteLink, Toggleable, Themeable],
   props: {
     activeClass: {
       type: String,

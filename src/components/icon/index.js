@@ -9,8 +9,8 @@ export default function install(Vue, options) {
             default: opt.classFormat
         },
         inContent: {
-            type: String,
-            default: `${opt.inContent}`
+            type: Boolean,
+            default: opt.inContent
         }
     };
 

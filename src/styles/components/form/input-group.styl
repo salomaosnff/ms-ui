@@ -4,12 +4,12 @@
     $grey_dark = $ms-colors['grey']['d2'];
     $primary = $ms-theme['primary']['base']
     $error = $ms-theme['error']['base']
-    $trans = $transition['swing']
+    $trans = all .3s $transition['fast-in-fast-out']
 
     display flex
+    flex-flow: row nowrap
     width 100%
     margin 1.5em 0
-    flex-direction: row
 
     input, textarea
         flex 1
@@ -31,7 +31,8 @@
         &prefix
         &suffix
             opacity .5
-            transition all .21s $trans
+            transition $trans
+            user-select: none
 
     textarea
         resize vertical
@@ -43,44 +44,58 @@
         left 0
         color $grey
         transform-origin 0 100%
-        transition all .21s $trans;
+        transition $trans;
         user-select: none
+        pointer-events: none
         z-index: 4
+        width: 100%
 
         & ~ .input--
             &prefix
             &suffix
                 opacity 0
-                transition: all .21s $trans
+
     .input
         &__
             &append-icon
             &prepend-icon
                 flex 0 auto
                 font-size: 1.5em
-                min-width 1.5em
                 color #000
+
+            &icon-cb
+                cursor: pointer
+                transition $trans;
+
+                &:hover
+                    opacity: .5
 
             &prepend-icon
                 opacity .5
                 text-align left
-                padding .08em 0 0 0
+                padding .08em .25em 0 0
 
             &append-icon
                 opacity .25
                 text-align right
+                padding-left: .25em
 
         &--
             &prefix
-                margin-right .25em
+                padding-right .25em
             &suffix
-                margin-left .25em
+                padding-left .25em
+
+    &__wrapper
+        display flex
+        flex-flow: row wrap
+        flex 1
 
     &__input
-        display flex
-        flex-flow: row wrap;
-        position relative
-        flex 1
+        display: flex
+        flex-flow: row nowrap
+        position: relative
+        flex: 1
 
     &__details
         display block
@@ -100,7 +115,7 @@
             position absolute
             top -.08em
             left 0
-            transition all .21s $trans;
+            transition $trans;
             border-top .19em solid $primary;
             width 0
             height 0
@@ -123,6 +138,51 @@
                 &--suffix
                     opacity .5
             
+
+    // Disabled
+    &--disabled
+        opacity: .75
+
+        input, textarea
+        .input--prefix
+        .input--suffix
+            cursor: default
+
+        & ^[0]
+            &__details
+                border-top-style: none
+
+                &:before
+                    content: ''
+                    position: absolute
+                    left: 0
+                    top: 0
+                    height: 1px
+                    width: 100%
+                    z-index: 0
+                    border-color: transparent
+                    background-color: transparent
+                    background-image: radial-gradient(circle, rgba(#000, 33%) 40%, transparent 50%);
+                    background-position: bottom
+                    background-size: 4px 1px
+                    background-repeat: repeat-x
+
+    // Alignment
+    &--center
+        .input__label
+            transform-origin: 50% 100%
+            text-align: center
+
+        input, textarea
+            text-align: center
+        
+    &--right
+        .input__label
+            transform-origin: 100% 100%
+            text-align: right
+
+        input, textarea
+            text-align: right
 
     // Required
     &--required

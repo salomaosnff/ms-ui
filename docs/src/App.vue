@@ -78,6 +78,7 @@
             label="Id do perfil"
             append-icon="lock"
             prefix="https://memeshare.com.br/profile/"
+            id="teste_de_id"
         ></ms-text-field>
         <ms-text-field 
             required
@@ -92,6 +93,15 @@
             prepend-icon="phone"
             prefix="+55"
             counter
+        ></ms-text-field>
+
+        <ms-text-field 
+            label="Text"
+            prefix="prefix"
+            suffix="suffix"
+            :append-icon="i ? 'lock-open' : 'lock'"
+            :append-icon-cb="() => i = !i"
+            :disabled="i"
         ></ms-text-field>
 
         <hr>
@@ -170,7 +180,8 @@
                     warning: 'alert',
                     error  : 'alert-circle'
                 },
-                html: '<h1>Olá Mundo!</h1>'
+                html: '<h1>Olá Mundo!</h1>',
+                i: false
             };
         },
         watch: {

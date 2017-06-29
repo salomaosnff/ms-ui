@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import $validators from '../_validators'
 
 export default {
@@ -49,10 +48,9 @@ export default {
         inputGroupClasses(){
             return Object.assign({
                 'input-group': true,
-                'input-group--focused': this.focused,
                 'input-group--dirty': this.isDirty,
-                'input-group--focused': this.focused,
-                'input-group--tab-focused': this.tabFocused,
+                'input-group--focused': !this.disabled && this.focused,
+                'input-group--tab-focused': !this.disabled && this.tabFocused,
                 'input-group--disabled': this.disabled,
                 'input-group--light': this.light || !this.dark,
                 'input-group--dark': !this.light && this.dark,
@@ -92,14 +90,12 @@ export default {
     methods: {
         toggle(){},
         setError(errors){
-            errors = _.isArray(errors) ? errors : [errors];
-            this.errorBucket = _.union(this.errorBucket, errors);
-        },
-        clearErrors(){
-            this.errorBucket = [];
+            errors = errors instanceof Array ? errors : [errors];
+            this.errorBucket = errors;
         },
         validate(){
-            this.clearErrors();
+            this.errorBucket = [];
+
             let validators = this.rules.filter(
                 r => ['function', 'string'].includes(typeof r) || r instanceof RegExp
             );
@@ -134,7 +130,6 @@ export default {
             } else {
                 messages = this.errorBucket
                     .filter(e => (typeof e !== 'undefined'))
-                    .slice(0, 2)
                     .map(e => this.genError(e));
             }
 
@@ -169,7 +164,24 @@ export default {
 
             return this.$createElement('label', data, this.label)
         },
-        
+        genIcon(type){
+            const icon = this[`${type}Icon`];
+            const cb = this[`${type}IconCb`];
+            const hasCb = typeof cb === 'function';
+
+            return this.$createElement('ms-icon', {
+                class: {
+                    [`input__${type}-icon`]: true,
+                    'input__icon-cb': hasCb
+                },
+                on: {
+                    click: e => {
+                        this.$refs.input.focus();
+                        hasCb && cb(e)
+                    },
+                }
+            }, icon);
+        },
         genInputGroup(input, data){
             const children = []
 
@@ -193,10 +205,14 @@ export default {
                 }
             }, data);
 
+            input = this.$createElement('div', {
+                'class': 'input-group__input'
+            }, [input]);
+
             children.push(
                 this.$createElement('div', {
-                    'class': 'input-group__input'
-                }, [input])
+                    'class': 'input-group__wrapper'
+                }, [input, this.genDetails()])
             );
 
             this.prependIcon && children.unshift(this.genIcon('prepend'));
