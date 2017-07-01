@@ -6,10 +6,31 @@
 
             <ms-hr></ms-hr>
 
-            <ms-text-field 
-                id="test"
-                prepend-icon="pencil"
-            ></ms-text-field>
+            <ms-layout wrap justify="center">
+
+                <ms-flex xs="4">
+
+                    <ms-layout wrap class="grey-l4--bg">
+
+                        <ms-flex xs="6">
+                            <ms-text-field 
+                                label="Teste"
+                                prepend-icon="pencil"
+                            ></ms-text-field>
+                        </ms-flex>
+
+                        <ms-flex xs="6">
+                            <ms-text-field 
+                                label="Teste"
+                                prepend-icon="pencil"
+                            ></ms-text-field>
+                        </ms-flex>
+
+                    </ms-layout>
+
+                </ms-flex>
+
+            </ms-layout>
 
             <h1>Buttons</h1>
             <table>
