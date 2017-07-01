@@ -1,6 +1,8 @@
 <template>
-    <ms-app>
+    <ms-page>
         <ms-container fluid xs="auto">
+
+            <ms-btn href="/test">Test Link</ms-btn>
 
             <ms-text-field 
                 id="test"
@@ -146,7 +148,7 @@
                 </tbody>
             </table>
         </ms-container>
-    </ms-app>
+    </ms-page>
 </template>
 
 <style lang="stylus">

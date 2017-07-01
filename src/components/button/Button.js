@@ -15,14 +15,12 @@ export default {
     default: Boolean,
     flat: Boolean,
     float: Boolean,
-    icon: Boolean,
     appendIcon: [Boolean, String],
     prependIcon: [Boolean, String],
     ripple: {
       type: [Boolean, Object],
       default: true
     },
-    round: Boolean,
     xs: Boolean,
     sm: Boolean,
     lg: Boolean,
@@ -41,17 +39,16 @@ export default {
       return {
         'btn': true,
 
-        'btn--icon': this.icon,
-
         'btn--active': this.isActive,
         'btn--disabled': this.disabled,
+
+        'btn--tab-focused': this.tabFocused,
 
         'btn--dark': !this.light && this.dark,
         'btn--light': this.light || !this.dark,
 
         'btn--block': this.block,
         'btn--raised': !this.flat,
-        'btn--round': this.round,
         
         'btn--default': this.default,
         'btn--flat': this.flat,
@@ -79,7 +76,7 @@ export default {
   },
   // Rederizar o componente
   render (create) {
-    const { tag, data } = this.generateRouteLink(); // Cria um elemento (Router-Link, a, button...)
+    const { tag, data } = this.genLink(); // Cria um elemento (Router-Link, a, button...)
     const content = [create('span', {'class': 'btn__text'}, [this.$slots.default])];
 
     // É um botão?
@@ -95,13 +92,9 @@ export default {
       content.push(create('ms-icon', {
         'class' : 'icon__append'
       }, [this.appendIcon]));
-    } 
+    }
 
     const button = create(tag, data, content);
-
-    // Remove focus
-    data.on.mouseup = e => button.elm.blur();
-    data.on.mouseleave = data.on.mouseup;
 
     return button;
   }

@@ -98,17 +98,6 @@ export default {
             this.$refs.input.focus();
             this.$emit('focus', e);
         },
-        keyup(e) {
-            switch(e.keyCode){
-                case 9:
-                    this.tabFocused = true;
-                    break;
-                case 13:
-                    this.toggle();
-                    break;
-                default:break;
-            }
-        },
         onInput(e) {
             this.inputValue = e.target.value;
             this.tabFocused = false;
