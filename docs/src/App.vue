@@ -14,7 +14,7 @@
 
                         <ms-flex xs="6">
                             <ms-text-field 
-                                label="Teste"
+                                label="Teste de label para testar a elispis dessa merda"
                                 prepend-icon="pencil"
                             ></ms-text-field>
                         </ms-flex>
