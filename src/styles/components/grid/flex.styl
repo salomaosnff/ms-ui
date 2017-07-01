@@ -7,6 +7,10 @@
 
   for $device, $size in $devices
     +media($device)
+
+      &--{$device}-auto
+        flex 0 auto
+
       for $i in (1..$grid-cols)
         &--{$device}-{$i}
           ms-grid-flex-width $i

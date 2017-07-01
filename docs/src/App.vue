@@ -1,6 +1,6 @@
 <template>
     <ms-app>
-        <ms-container fluid>
+        <ms-container fluid xs="auto">
 
             <ms-text-field 
                 id="test"
