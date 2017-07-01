@@ -6,6 +6,10 @@ export default {
             type: String,
             default: ''
         },
+        tag: {
+            type: String,
+            default: 'div'  
+        },
         light: {
             type: Boolean,
             default: true,
@@ -33,6 +37,6 @@ export default {
 
         data.domProps = { id: props.id }
 
-        return create('div', data, children)
+        return create(props.tag, data, children)
     }
 }
