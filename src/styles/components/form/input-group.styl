@@ -20,6 +20,7 @@
         background none
         margin 0
         text-align inherit
+        opacity: .75
 
     input, textarea
     .input--prefix
@@ -66,10 +67,10 @@
                 font-size: 1.5em
                 color currentColor
                 opacity: .5
+                transition $trans
 
             &icon-cb
                 cursor: pointer
-                transition $trans;
 
                 &:hover
                     opacity: .5
@@ -191,6 +192,9 @@
     // Focus
     &--focused
 
+        input, textarea
+            opacity: 1
+
         .input__
             &label
                 color $primary
@@ -223,10 +227,7 @@
 
     
     &--light
-        color $grey
-
-        &^[0]--focused
-            color #FFF
+        color: #FFF
                 
     // Styles
     for $name, $color in $ms-theme

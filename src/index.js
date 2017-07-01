@@ -3,6 +3,7 @@ import Media from './directives/media';
 import Ripple from './directives/ripple';
 
 // Components
+import App from './components/app/';
 import Grid from './components/grid/';
 import Container from './components/container/';
 import Icon from './components/icon/';
@@ -16,6 +17,7 @@ const Plugin = {
     Ripple,
 
     // Components
+    App,
     Grid,
     Container,
     Icon,

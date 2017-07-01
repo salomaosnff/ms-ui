@@ -1,144 +1,152 @@
 <template>
-    <ms-container fluid>
-        <h1>Buttons</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Style</th>
-                    <th>Raised</th>
-                    <th>Flat</th>
-                    <th>Extra Small</th>
-                    <th>Small</th>
-                    <th>Large</th>
-                    <th>Prepend Icon</th>
-                    <th>Append Icon</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(style, i) in styles" :key="i">
-                    <td>{{style}}</td>
-                    <td><ms-btn v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn flat v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn xs v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn sm v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn lg v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn prepend-icon="account" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn append-icon="lock" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                </tr>
-            </tbody>
-        </table>
-        <h1>Buttons Light</h1>
-        <table class="dark">
-            <thead>
-                <tr>
-                    <th>Style</th>
-                    <th>Raised</th>
-                    <th>Flat</th>
-                    <th>Extra Small</th>
-                    <th>Small</th>
-                    <th>Large</th>
-                    <th>Prepend Icon</th>
-                    <th>Append Icon</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(style, i) in styles" :key="i">
-                    <td>{{style}}</td>
-                    <td><ms-btn light v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light flat v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light xs v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light sm v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light lg v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light prepend-icon="account" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                    <td><ms-btn light append-icon="lock" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
-                </tr>
-            </tbody>
-        </table>
-        <h1>Text Fields</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Style</th>
-                    <th>Default</th>
-                    <th>Label</th>
-                    <th>Prepend Icon</th>
-                    <th>Append Icon</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(style, i) in styles" :key="i">
-                    <td>{{style}}</td>
-                    <td>
-                        <ms-text-field 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            :label="`Input ${style}`" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            prepend-icon="pencil" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            append-icon="eye" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>Textfields Light</h2>
-        <table class="dark">
-            <thead>
-                <tr>
-                    <th>Style</th>
-                    <th>Default</th>
-                    <th>Label</th>
-                    <th>Prepend Icon</th>
-                    <th>Append Icon</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(style, i) in styles" :key="i">
-                    <td>{{style}}</td>
-                    <td>
-                        <ms-text-field 
-                            light
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            light
-                            :label="`Input ${style}`" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            light
-                            prepend-icon="pencil" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                    <td>
-                        <ms-text-field 
-                            light
-                            append-icon="eye" 
-                            v-bind="{[style]:true}"
-                        ></ms-text-field>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</ms-container>
+    <ms-app>
+        <ms-container fluid>
+
+            <ms-text-field 
+                id="test"
+                prepend-icon="pencil"
+            ></ms-text-field>
+
+            <h1>Buttons</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Raised</th>
+                        <th>Flat</th>
+                        <th>Extra Small</th>
+                        <th>Small</th>
+                        <th>Large</th>
+                        <th>Prepend Icon</th>
+                        <th>Append Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(style, i) in styles" :key="i">
+                        <td>{{style}}</td>
+                        <td><ms-btn v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn flat v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn xs v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn sm v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn lg v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn prepend-icon="account" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn append-icon="lock" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1>Buttons Light</h1>
+            <table class="dark">
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Raised</th>
+                        <th>Flat</th>
+                        <th>Extra Small</th>
+                        <th>Small</th>
+                        <th>Large</th>
+                        <th>Prepend Icon</th>
+                        <th>Append Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(style, i) in styles" :key="i">
+                        <td>{{style}}</td>
+                        <td><ms-btn light v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light flat v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light xs v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light sm v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light lg v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light prepend-icon="account" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                        <td><ms-btn light append-icon="lock" v-bind="{[style]: true}">{{ style }}</ms-btn></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1>Text Fields</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Default</th>
+                        <th>Label</th>
+                        <th>Prepend Icon</th>
+                        <th>Append Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(style, i) in styles" :key="i">
+                        <td>{{style}}</td>
+                        <td>
+                            <ms-text-field 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                :label="`Input ${style}`" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                prepend-icon="pencil" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                append-icon="eye" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Textfields Light</h2>
+            <table class="dark">
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Default</th>
+                        <th>Label</th>
+                        <th>Prepend Icon</th>
+                        <th>Append Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(style, i) in styles" :key="i">
+                        <td>{{style}}</td>
+                        <td>
+                            <ms-text-field 
+                                light
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                light
+                                :label="`Input ${style}`" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                light
+                                prepend-icon="pencil" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                        <td>
+                            <ms-text-field 
+                                light
+                                append-icon="eye" 
+                                v-bind="{[style]:true}"
+                            ></ms-text-field>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ms-container>
+    </ms-app>
 </template>
 
 <style lang="stylus">
@@ -146,6 +154,9 @@
     @import "../../src/styles/main"
 
     $primary = $ms-theme['primary']['base']
+
+    #test
+        color red
 
     for i in (1..6)
         h{i}
