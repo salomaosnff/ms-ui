@@ -13,7 +13,7 @@
     font bold .9em 'Roboto'
     border none
     background $default['base'];
-    color $default['sec'];
+    color rgba($default['sec'], 82%);
     margin .5em
     cursor pointer
     text-align center
@@ -99,7 +99,7 @@
     for $name, $color in $ms-theme
         &.{$name}
             background $color['base'];
-            color rgba($color['sec'], 90%);
+            color rgba($color['sec'], 82%);
 
             &:hover
                 background $color['hover'];
