@@ -15,11 +15,15 @@
 
             <ms-hr></ms-hr>
 
-            <ms-text-field
-                hint="label"
-                label="label label"
-                help="Helpeeeeeeeeer"
-            ></ms-text-field>
+            <ms-checkbox
+                v-for="(opt, i) in terms"
+                :key="i"
+                :value="opt"
+            >{{opt}}</ms-checkbox>
+
+            <pre>
+                {{items}}
+            </pre>
 
             <ms-layout wrap justify="center">
 
@@ -243,7 +247,12 @@
                     error  : 'alert-circle'
                 },
                 html: '<h1>Olá Mundo!</h1>',
-                i: false
+                i: false,
+                terms: [
+                    'Option 1',
+                    'Option 2'
+                ],
+                items: []
             };
         },
         watch: {

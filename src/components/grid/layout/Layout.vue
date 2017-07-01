@@ -12,7 +12,8 @@
             wrap: String,
             reverse: String,
             justify: String,
-            align: String
+            align: String,
+            alignItems: String
         },
         computed: {
             classes() {
@@ -26,11 +27,12 @@
 
                 return [
                     'ms-layout',
-                    {'ms-layout-col': col},
-                    {'ms-layout-wrap': wrap},
-                    {'ms-layout-reverse': reverse},
-                    {[`ms-layout-justify-${this.justify}`]: justify},
-                    {[`ms-layout-align-${this.align}`]: align}
+                    {'ms-layout--col': col},
+                    {'ms-layout--wrap': wrap},
+                    {'ms-layout--reverse': reverse},
+                    {[`ms-layout--justify-${this.justify}`]: justify},
+                    {[`ms-layout--align-${this.align}`]: align},
+                    {[`ms-layout--align-items-${this.alignItems}`]: true}
                 ];
             }
         }

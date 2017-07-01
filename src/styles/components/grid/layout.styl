@@ -5,17 +5,20 @@
 
   display flex
 
-  &-reverse
+  &--wrap
+    flex-wrap wrap
+
+  &--reverse
     flex-direction row-reverse
 
-  &-col
+  &--col
     flex-direction column
 
     ../-reverse.ms-layout-col
       flex-direction column-reverse
       border 2px solid red
 
-  &-justify
+  &--justify
     &-start
       justify-content flex-start
     &-center
@@ -27,7 +30,19 @@
     &-between
       justify-content space-between
 
-  &-align
+  &--align
+    &-items
+      &-start
+        align-items flex-start
+      &-center
+        align-items center
+      &-end
+        align-items flex-end
+      &-around
+        align-items space-around
+      &-between
+        align-items space-between
+
     &-start
       align-content flex-start
     &-center
@@ -43,6 +58,3 @@
     row-margin('bottom', $device)
     &-column
       row-margin('right', $device)
-
-  &-wrap
-    flex-wrap wrap

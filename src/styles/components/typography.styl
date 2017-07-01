@@ -217,57 +217,46 @@ ul, ol
     typo-button($colorContrast: true)
 
 
-.ms-typo--text-left
-    text-align: left
+.ms-text
+    &--left
+        text-align: left
 
+    &--right
+        text-align: right
 
-.ms-typo--text-right
-    text-align: right
+    &--center
+        text-align: center
 
+    &--justify
+        text-align: justify
 
-.ms-typo--text-center
-    text-align: center
+    &--nowrap
+        white-space: nowrap
 
+    &--lower
+        text-transform: lowercase
 
-.ms-typo--text-justify
-    text-align: justify
+    &--upper
+        text-transform: uppercase
 
+    &--capitalize
+        text-transform: capitalize
 
-.ms-typo--text-nowrap
-    white-space: nowrap
+.ms-font
+    &--thin
+        font-weight: 200 !important
 
+    &--light
+        font-weight: 300 !important
 
-.ms-typo--text-lowercase
-    text-transform: lowercase
+    &--regular
+        font-weight: 400 !important
 
+    &--medium
+        font-weight: 500 !important
 
-.ms-typo--text-uppercase
-    text-transform: uppercase
+    &--bold
+        font-weight: 700 !important
 
-
-.ms-typo--text-capitalize
-    text-transform: capitalize
-
-
-.ms-typo--font-thin
-    font-weight: 200 !important
-
-
-.ms-typo--font-light
-    font-weight: 300 !important
-
-
-.ms-typo--font-regular
-    font-weight: 400 !important
-
-
-.ms-typo--font-medium
-    font-weight: 500 !important
-
-
-.ms-typo--font-bold
-    font-weight: 700 !important
-
-
-.ms-typo--font-black
-    font-weight: 900 !important
+    &--bolder
+        font-weight: 900 !important

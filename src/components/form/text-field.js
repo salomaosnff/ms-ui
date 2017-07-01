@@ -116,6 +116,7 @@ export default {
 
             // Input data
             const data = {
+                class: 'input-group__value',
                 domProps: {
                     id: this.inputId,
                     value: this.lazyValue,
