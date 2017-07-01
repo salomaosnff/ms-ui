@@ -24,6 +24,10 @@
         text-align inherit
         opacity: .75
 
+        +placeholder()
+            transition: $trans
+            opacity: 0
+
     input, textarea
     .input--prefix
     .input--suffix
@@ -121,6 +125,7 @@
         flex-basis: 100%;
         width 100%
         border-top .08em solid $grey;
+        line-height: 1
         
         &:before
             content ''
@@ -146,6 +151,12 @@
     &--focused, &--dirty
         .input__label
             transform scale(.8) translate(0, -150%)
+
+            & ~ input
+            & ~ textarea
+                +placeholder()
+                    opacity: 1
+
             & ~ .input
                 &--prefix
                 &--suffix

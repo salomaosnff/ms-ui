@@ -15,6 +15,12 @@
 
             <ms-hr></ms-hr>
 
+            <ms-text-field
+                hint="label"
+                label="label label"
+                help="Helpeeeeeeeeer"
+            ></ms-text-field>
+
             <ms-layout wrap justify="center">
 
                 <ms-flex xs="4">

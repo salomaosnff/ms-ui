@@ -4,3 +4,12 @@ user-select($content...)
     -moz-user-select: $content
     user-select: $content
     
+placeholder()
+    &::-webkit-input-placeholder
+        {block}
+    &:-moz-placeholder
+        {block}
+    &::-moz-placeholder
+        {block}
+    &:-ms-input-placeholder
+        {block} 
