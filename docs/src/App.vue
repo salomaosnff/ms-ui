@@ -1,6 +1,15 @@
 <template>
     <ms-page>
-        <ms-container fluid xs="auto">
+        <ms-container fluid class="grey-d3--text">
+
+            <h1>Heading H1</h1>
+            <h2>Heading H2</h2>
+            <h3>Heading H3</h3>
+            <h4>Heading H4</h4>
+            <h5>Heading H5</h5>
+            <h6>Heading H6</h6>
+
+            <p><small>Small Text</small> <a href="#">Hyperlink</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi officiis iure et, fuga consectetur eius dolor voluptatibus aliquid repudiandae eaque.</p>
 
             <ms-btn href="/test">Test Link</ms-btn>
 

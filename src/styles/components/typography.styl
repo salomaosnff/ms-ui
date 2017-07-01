@@ -1,0 +1,273 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html, body 
+    font: $base-font-size $base-font;
+    color: $text-color-primary;
+    font-weight: 400
+    line-height: 20px
+
+h1, h2, h3, h4, h5, h6, p 
+    margin: 0
+    padding: 0
+
+/**
+* Styles for HTML elements
+*/
+
+h1, h2, h3, h4, h5, h6 
+    small
+        typo-display-3(true)
+        font-size: 0.6em
+
+h1 
+    typo-display-3()
+
+    margin: calc-em(24px) 0
+
+h2 
+    typo-display-2()
+
+    margin: calc-em(24px) 0
+
+h3 
+    typo-display-1()
+
+    margin: calc-em(24px) 0
+
+h4 
+    typo-headline()
+
+    margin-top: calc-em(24px)
+    margin-bottom: calc-em(16px)
+
+h5 
+    typo-title()
+
+    margin-top: calc-em(24px)
+    margin-bottom: calc-em(16px)
+
+h6 
+    typo-subhead()
+
+    margin-top: calc-em(24px)
+    margin-bottom: calc-em(16px)
+
+p 
+    typo-body-1()
+
+    margin-bottom: calc-em(16px)
+
+a 
+    color: $text-link-color
+    text-decoration: none
+    font-weight: 500
+
+blockquote 
+    typo-blockquote()
+
+mark 
+    background-color: $ms-colors['yellow']['l3'];
+
+dt 
+    font-weight: 700
+
+address 
+    typo-caption()
+
+    font-style: normal
+
+ul, ol 
+    typo-body-1()
+
+/**
+ * Class Name Styles
+ */
+
+.ms-typo--display-4
+    typo-display-4()
+
+
+.ms-typo--display-4-color-contrast
+    typo-display-4($colorContrast: true)
+
+
+.ms-typo--display-3
+    typo-display-3()
+
+
+.ms-typo--display-3-color-contrast
+    typo-display-3($colorContrast: true)
+
+
+.ms-typo--display-2
+    typo-display-2()
+
+
+.ms-typo--display-2-color-contrast
+    typo-display-2($colorContrast: true)
+
+
+.ms-typo--display-1
+    typo-display-1()
+
+
+.ms-typo--display-1-color-contrast
+    typo-display-1($colorContrast: true)
+
+
+.ms-typo--headline
+    typo-headline()
+
+
+.ms-typo--headline-color-contrast
+    typo-headline($colorContrast: true)
+
+
+.ms-typo--title
+    typo-title()
+
+
+.ms-typo--title-color-contrast
+    typo-title($colorContrast: true)
+
+
+.ms-typo--subhead
+    typo-subhead()
+
+
+.ms-typo--subhead-color-contrast
+    typo-subhead($colorContrast: true)
+
+
+.ms-typo--body-2
+    typo-body-2()
+
+
+.ms-typo--body-2-color-contrast
+    typo-body-2($colorContrast: true)
+
+
+.ms-typo--body-1
+    typo-body-1()
+
+
+.ms-typo--body-1-color-contrast
+    typo-body-1($colorContrast: true)
+
+
+.ms-typo--body-2-force-preferred-font
+    typo-body-2($usePreferred: true)
+
+
+.ms-typo--body-2-force-preferred-font-color-contrast
+    typo-body-2($colorContrast: true, $usePreferred: true)
+
+
+.ms-typo--body-1-force-preferred-font
+    typo-body-1($usePreferred: true)
+
+
+.ms-typo--body-1-force-preferred-font-color-contrast
+    typo-body-1($colorContrast: true, $usePreferred: true)
+
+
+.ms-typo--caption
+    typo-caption()
+
+
+.ms-typo--caption-force-preferred-font
+    typo-caption($usePreferred: true)
+
+
+.ms-typo--caption-color-contrast
+    typo-caption($colorContrast: true)
+
+
+.ms-typo--caption-force-preferred-font-color-contrast
+    typo-caption($colorContrast: true, $usePreferred: true)
+
+
+.ms-typo--menu
+    typo-menu()
+
+
+.ms-typo--menu-color-contrast
+    typo-menu($colorContrast: true)
+
+
+.ms-typo--button
+    typo-button()
+
+
+.ms-typo--button-color-contrast
+    typo-button($colorContrast: true)
+
+
+.ms-typo--text-left
+    text-align: left
+
+
+.ms-typo--text-right
+    text-align: right
+
+
+.ms-typo--text-center
+    text-align: center
+
+
+.ms-typo--text-justify
+    text-align: justify
+
+
+.ms-typo--text-nowrap
+    white-space: nowrap
+
+
+.ms-typo--text-lowercase
+    text-transform: lowercase
+
+
+.ms-typo--text-uppercase
+    text-transform: uppercase
+
+
+.ms-typo--text-capitalize
+    text-transform: capitalize
+
+
+.ms-typo--font-thin
+    font-weight: 200 !important
+
+
+.ms-typo--font-light
+    font-weight: 300 !important
+
+
+.ms-typo--font-regular
+    font-weight: 400 !important
+
+
+.ms-typo--font-medium
+    font-weight: 500 !important
+
+
+.ms-typo--font-bold
+    font-weight: 700 !important
+
+
+.ms-typo--font-black
+    font-weight: 900 !important

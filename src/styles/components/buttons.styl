@@ -4,20 +4,17 @@
     $dark-hover = $ms-colors['grey']['d1'];
 
     ms-elevation-transition()
+    typo-button()
+
     display inline-block
     position relative
     padding .6439em 1.142857143em
     border-radius .15em
-    text-decoration none
-    text-transform uppercase
-    font bold .9em 'Roboto'
     border none
     background $default['base'];
     color rgba($default['sec'], 82%);
     margin .5em
     cursor pointer
-    text-align center
-    white-space nowrap
 
     & + .btn
         margin-left: .25em
@@ -75,6 +72,7 @@
     // Flat
     &--flat
         ms-elevation 0
+        transition $primary-transition;
         background: none
         color: rgba($default['sec'], 82%);
 
