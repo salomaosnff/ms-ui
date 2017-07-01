@@ -4,6 +4,8 @@
 
             <ms-btn href="/test">Test Link</ms-btn>
 
+            <ms-hr></ms-hr>
+
             <ms-text-field 
                 id="test"
                 prepend-icon="pencil"

@@ -6,15 +6,15 @@ build_style_classes($style_object, $bg="--bg", $fg="--text")
             for $style-name, $color in $sub-styles
                 if index($ignore, $style-name) isnt null
                     &{$bg}
-                        background-color $color
+                        background-color $color !important
                     &{$fg}
-                        color $color
+                        color $color !important
                 else
                     &-{$style-name}
                         &{$bg}
-                            background-color $color
+                            background-color $color !important
                         &{$fg}
-                            color $color
+                            color $color !important
 
 build_style_classes($ms-colors)
 build_style_classes($ms-theme)

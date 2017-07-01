@@ -9,7 +9,8 @@ import Container from './components/container/';
 import Icon from './components/icon/';
 import Button from './components/button/';
 import Form from './components/form/';
-import Transitions from './components/transitions'
+import Transitions from './components/transitions';
+import Hr from './components/hr';
 
 const Plugin = {
     // Directives
@@ -23,7 +24,8 @@ const Plugin = {
     Icon,
     Button,
     Form,
-    Transitions
+    Transitions,
+    Hr
 };
 
 Plugin.install = (Vue, options) => {
