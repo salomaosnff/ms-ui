@@ -2,6 +2,9 @@
   flex 1
   ms-grid-flex-gutter($grid-gutter[xs])
 
+  &--auto
+    flex 0 auto
+
   for $device, $size in $devices
     +media($device)
       for $i in (1..$grid-cols)
