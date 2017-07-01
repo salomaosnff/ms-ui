@@ -5,6 +5,7 @@ for $device, $index in $dev
     $next = $dev[$index + 1]
 
     .ms-{$device}-hide
+        display: initial
     
         if !$next
             +media($device)
@@ -14,6 +15,7 @@ for $device, $index in $dev
                 display: none !important
 
     .ms-{$device}-show
+        display: none
     
         if !$next
             +media($device)
