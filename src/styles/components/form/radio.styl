@@ -1,0 +1,98 @@
+.ms-radio
+    $default = $ms-colors['grey'];
+    $primary = $ms-theme['primary']['base'];
+    $trans = $transition['swing'];
+
+    display: inline-block
+    white-space: nowrap
+    position: relative
+    margin: .25em 1em .25em 0
+
+    &__input
+    &__label
+        display: inline-block
+        vertical-align: middle
+        transition all .3s $trans
+
+    &__input
+        position: relative
+        width: 1.2em
+        height: 1.2em
+        border-radius: 50%
+        border: 2px solid $default['b'];
+        margin-right: .5em
+        cursor: pointer
+
+        ^[0]:hover &
+            border-color: $default['d1'];
+
+        &:after
+            content: ''
+            display: block
+            position: absolute
+            left: 50%
+            top: 50%
+            width: 100%
+            height: 100%
+            background: $primary
+            opacity: 0
+            border-radius: 100%
+            transform translate(-50%, -50%) scale(0)
+            transition: all .4s .5s $trans;
+
+        &:active:after
+            opacity: .14
+            background: #000
+            transform translate(-50%, -50%) scale(2.618)
+            transition: transform .1s $trans, opacity .3s $trans
+
+        &:before
+            content: ''
+            display: block
+            position: absolute
+            width: 100%
+            height: 100%
+            left: 0
+            top: 0
+            background: $primary
+            transform scale(0)
+            border-radius: 100%
+            border: none
+            opacity: 0
+            transition: all .3s $trans;
+
+    &__label
+        cursor: default
+
+    &--checked
+        & ^[0]__input
+            ~/:hover&, &
+                border-color: $primary
+
+            &:before
+                opacity: 1
+                transform scale(.70)
+
+    &--disabled
+        cursor: default
+
+        & ^[0]__input
+            border-color: $default['b'] !important;
+            opacity: .5
+
+            ^[0]--checked&:before
+                background: $default['b'] !important;
+
+    for $name, $color in $ms-theme
+        &--{$name}
+            &:hover
+                & ^[0]__input
+                    border-color: $color['base'] !important;
+
+            &^[0]--checked
+                & ^[0]__input
+                    border-color: $color['base'] !important;
+
+                    &:after
+                    &:before
+                        background: $color['base'];

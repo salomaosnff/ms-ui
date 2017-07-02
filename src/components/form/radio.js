@@ -10,7 +10,7 @@ export default {
         label: String,
         html: Boolean,
         inputModel: {
-            type: [Array, Boolean],
+            type: [String, Boolean],
             default: false
         }
     },
@@ -27,18 +27,18 @@ export default {
     computed: {
         classes() {
             return {
-                'ms-checkbox': true,
+                'ms-radio': true,
                 
-                'ms-checkbox--disabled': this.disabled,
-                'ms-checkbox--checked': this.isChecked,
+                'ms-radio--disabled': this.disabled,
+                'ms-radio--checked': this.isChecked,
 
-                'ms-checkbox--light': this.light && !this.dark,
+                'ms-radio--light': this.light && !this.dark,
 
-                'ms-checkbox--primary': this.primary,
-                'ms-checkbox--info': this.info,
-                'ms-checkbox--success': this.success,
-                'ms-checkbox--warning': this.warning,
-                'ms-checkbox--error': this.error,
+                'ms-radio--primary': this.primary,
+                'ms-radio--info': this.info,
+                'ms-radio--success': this.success,
+                'ms-radio--warning': this.warning,
+                'ms-radio--error': this.error,
             }
         },
         isChecked: {
@@ -47,35 +47,24 @@ export default {
                     return this.inputModel;
                 }
 
-                return this.inputModel.includes(this.value);
+                return this.inputModel === this.value;
             },
             set(val){
-                let model = this.inputModel;
-
                 // Para Model do Tipo Booleano
-                if(typeof model === 'boolean'){
+                if(typeof this.inputModel === 'boolean') {
                     this.$emit('change', val);
                     return;
                 }
-                
-                // Para Model do Tipo Array
-                const index = model.indexOf(this.value);
-
-                if(index >= 0){ // Remove se já existir
-                    model.splice(index, 1);
-                } else { // Adiciona se não existir
-                    model.push(this.value);
-                }
 
                 // Atualizar o valor do model
-                this.$emit('change', model);
+                this.$emit('change', this.value);
             }
         }
     },
     methods: {
-        toggle(e) {
+        check(e) {
             if(!this.disabled) {
-                this.isChecked = !this.isChecked;
+                this.isChecked = true;
             }
         }
     },
@@ -90,16 +79,16 @@ export default {
                 id: this.inputId
             },
             on: {
-                click: this.toggle
+                click: this.check
             }
         }
 
         const checkbox = create('span', {
-            class: 'ms-checkbox__input'
+            class: 'ms-radio__input'
         });
 
         const labelData = {
-            class: 'ms-checkbox__label',
+            class: 'ms-radio__label',
             domProps: {}
         }
 

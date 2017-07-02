@@ -16,14 +16,38 @@
             <ms-hr></ms-hr>
 
             <ms-checkbox
-                v-for="(opt, i) in terms"
+                v-for="(style, i) in styles"
                 :key="i"
-                :value="opt"
-            >{{opt}}</ms-checkbox>
+                v-bind="{[style]: true}"
+                v-model="items"
+                :label="`Checkbox ${style}`"
+            ></ms-checkbox>
 
-            <pre>
-                {{items}}
-            </pre>
+            <ms-checkbox
+                disabled
+                v-model="items"
+                label="Disabled"
+            ></ms-checkbox>
+
+            <ms-hr></ms-hr>
+
+            <ms-radio
+                v-for="(style, i) in styles"
+                :key="i"
+                :value="i"
+                v-bind="{[style]: true}"
+                v-model="genre"
+                :label="`Radio ${style}`"
+            ></ms-radio>
+
+            <ms-radio
+                disabled
+                label="Disabled"
+                :value="0"
+                v-model="genre"
+            ></ms-radio>
+
+            <pre>{{genre}}</pre>
 
             <ms-layout wrap justify="center">
 
@@ -248,11 +272,8 @@
                 },
                 html: '<h1>Olá Mundo!</h1>',
                 i: false,
-                terms: [
-                    'Option 1',
-                    'Option 2'
-                ],
-                items: []
+                items: ['carro'],
+                genre: ''
             };
         },
         watch: {
