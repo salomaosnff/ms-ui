@@ -22,8 +22,9 @@
                 const reverse = typeof this.reverse !== 'undefined';
 
                 const alignments = ['start', 'center', 'end', 'around', 'between'];
-                const justify = alignments.indexOf(this.justify) >= 0;
-                const align = alignments.indexOf(this.align) >= 0;
+                const justify = alignments.includes(this.justify);
+                const align = alignments.includes(this.align);
+                const alignItems = alignments.includes(this.alignItems);
 
                 return [
                     'ms-layout',
@@ -32,7 +33,7 @@
                     {'ms-layout--reverse': reverse},
                     {[`ms-layout--justify-${this.justify}`]: justify},
                     {[`ms-layout--align-${this.align}`]: align},
-                    {[`ms-layout--align-items-${this.alignItems}`]: true}
+                    {[`ms-layout--align-items-${this.alignItems}`]: alignItems}
                 ];
             }
         }

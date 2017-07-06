@@ -1,7 +1,7 @@
 .ms-checkbox
     $default = $ms-colors['grey'];
     $primary = $ms-theme['primary']['base'];
-    $trans = $transition['swing'];
+    $trans   = $transition['swing'];
 
     display: inline-block
     white-space: nowrap
@@ -52,14 +52,14 @@
             position: absolute
             width: 0
             height: 0
-            left: 50%
-            top: 50%
-            transform: translate(-45%, -55%) rotate(45deg)
+            left: .2em
+            bottom: .3851015897em
+            transform: rotate(-45deg)
             border: none
-            border-bottom: 2px solid rgba(#fff, 82%)
-            border-right: 2px solid rgba(#fff, 82%)
+            border-bottom: .12em solid rgba(#fff, 82%)
+            border-left: .12em solid rgba(#fff, 82%)
             opacity: 0
-            transition: transform .3s $trans, width .3s .1s $trans, height .2s .1s $trans
+            transition: all .1s ease
 
     &__label
         cursor: default
@@ -71,9 +71,20 @@
                 background: $primary;
 
             &:before
-                width: 25%
-                height: 70%
+                $w-time = .25s
+                $h-time = $w-time / 1.618
+
+                width: .7em
+                height: .2em
                 opacity: 1
+                left: .12em
+                bottom: .3851015897em
+                transition: 
+                     height $h-time ease,
+                     bottom $h-time ease,
+                     left $w-time $h-time ease,
+                     width $w-time $h-time ease
+
 
     &--disabled
         cursor: default

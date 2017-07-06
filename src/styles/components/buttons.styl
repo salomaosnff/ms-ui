@@ -70,18 +70,6 @@
     &--lg
         font-size: 1.2em
 
-    // Flat
-    &--flat
-        ms-elevation 0
-        transition $primary-transition;
-        background: none
-        color: rgba($default['sec'], 82%);
-
-        &:hover
-            background: $default['hover'];
-
-        &:active
-            background: $default['active'];
 
     &--light
         background $dark
@@ -90,9 +78,20 @@
         &:hover
             background $dark-hover
         &^[0]--flat
-            background none
+            color rgba(#FFF, 82%)
             &:hover
-                background rgba($dark-hover, 25%)
+                background rgba(#FFF, 8%)
+
+    // Flat
+    &--flat
+        $color = $default['sec'];
+        ms-elevation 0
+        transition $primary-transition;
+        background: none
+        color: rgba($color, 82%);
+
+        &:hover
+            background rgba($color, 8%)
 
     // Colors
     for $name, $color in $ms-theme
@@ -105,3 +104,9 @@
 
             &:active
                 background $color['active'];
+
+for $device in $devices
+    +media($device)
+        .ms-{$device}-btn--block
+            display block
+            width 100%

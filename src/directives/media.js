@@ -1,38 +1,32 @@
-const mediaClass = ($el, device, classes) => {
+const media = (el, bind) => {
+    
+    if(!bind.modifiers || !bind.value) return;
 
-    const devices = ['xs', 'sm', 'md', 'lg', 'xl'];
+    let classes = bind.value,
+        devices = Object.keys(bind.modifiers)
+            .filter(dev => ['xs', 'sm', 'md', 'lg', 'xl'].includes(dev));
 
-    if (!device) {
-        return;
+    if(typeof classes === "string"){
+        classes = classes.split(/[\s\t|.]/);
+    } else if(classes instanceof Object){
+        classes = Object.keys(classes).filter(c => classes[c]);
+    } else {
+        classes = [];
     }
 
-    device = device.split(/([\s|,])/g)
-        .filter((dev) => devices.indexOf(dev) >= 0)
-        .map((dev) => `ms-${dev}-`);
-
-    classes.forEach((className) => {
-
-        devices.forEach((dev) => {
-            dev = `ms-${dev}-`;
-            $el.classList.remove(dev + className);
-        });
-
-        device.forEach((dev) => $el.classList.add(dev + className));
-
-    });
+    console.log(el.classList)
+    devices.map(d => classes.map(c => `ms-${d}-${c}`))
+        .forEach(c => {
+            el.classList.remove(c);
+            if(!bind.arg){
+                el.classList.add(c);
+            }
+        })
 };
 
 export default function install(Vue) {
     Vue.directive('media', {
-        bind(el, bind) {
-            const classes = Object.keys(bind.modifiers);
-
-            mediaClass(el, bind.value, classes);
-        },
-        update(el, bind) {
-            const classes = Object.keys(bind.modifiers);
-
-            mediaClass(el, bind.value, classes);
-        }
+        bind: media,
+        update: media
     });
 }
