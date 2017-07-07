@@ -1,4 +1,7 @@
 media($min, $max = false)
+  $dev = keys($devices)
+  $max = $max is true ? ($dev[index($dev, $min) + 1] || false) : $max
+
   if $max is false
     if $min is xs
       {block}

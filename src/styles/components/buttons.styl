@@ -1,3 +1,13 @@
+// Variables
+$block-btn = {
+    display: block
+    width: 100%
+    margin-right: 0
+    margin-left: 0
+    padding: 1em
+}
+
+// Button
 .btn
     $default = $ms-theme['default'];
     $dark = $ms-colors['grey']['d2']
@@ -16,8 +26,8 @@
     margin .5em
     cursor pointer
 
-    & + .btn
-        margin-left: .25em
+    & + &
+        margin-left: 0
 
     .mdi, .btn__text
         vertical-align baseline
@@ -51,8 +61,7 @@
         ms-elevation 10
 
     &--block
-        display block
-        width 100%
+        {$block-btn}
         
     // Raised
     &--raised
@@ -105,8 +114,8 @@
             &:active
                 background $color['active'];
 
+// Button Block
 for $device in $devices
-    +media($device)
-        .ms-{$device}-btn--block
-            display block
-            width 100%
+    +media($device, true)
+        .ms-{$device}-btn-block
+            {$block-btn}

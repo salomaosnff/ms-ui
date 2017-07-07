@@ -107,6 +107,7 @@ export default {
             this.focused = false;
             this.tabFocused = false;
             this.$refs.input.blur();
+            this.$nextTick(this.validate);
             this.$emit('blur', e);
         },
         genInput() {

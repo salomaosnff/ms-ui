@@ -14,7 +14,6 @@ const media = (el, bind) => {
         classes = [];
     }
 
-    console.log(el.classList)
     devices.map(d => classes.map(c => `ms-${d}-${c}`))
         .forEach(c => {
             el.classList.remove(c);

@@ -76,6 +76,15 @@ export default {
         toggle(e) {
             if(!this.disabled) {
                 this.isChecked = !this.isChecked;
+
+                // Validate
+                this.$nextTick(this.validate);
+            }
+        },
+        validate() {
+            this.errorBucket = [];
+            if(this.required && !this.isChecked) {
+                this.errorBucket = ['Você deve marcar esta caixa.'];
             }
         }
     },
@@ -111,6 +120,9 @@ export default {
 
         const label = create('span', labelData);
 
-        return create('div', data, [checkbox, label]);
+        // Remove counter from details
+        this.counter = false;
+
+        return create('div', data, [checkbox, label, this.genDetails()]);
     }
 }

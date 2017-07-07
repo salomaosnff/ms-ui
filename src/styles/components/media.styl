@@ -1,0 +1,5 @@
+for $device in $devices
+    +media($device, true)
+        .ms-{$device}-block
+            display: block !important
+            width: 100% !important

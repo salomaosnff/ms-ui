@@ -88,6 +88,7 @@ export default {
     },
     methods: {
         toggle(){},
+        focus(){},
         setError(errors){
             errors = errors instanceof Array ? errors : [errors];
             this.errorBucket = errors;
@@ -99,7 +100,7 @@ export default {
                 r => ['function', 'string'].includes(typeof r) || r instanceof RegExp
             );
             
-            if(this.required) validators = _.union(['required'], validators);
+            if(this.required && !validators.includes('required')) validators.push('required');
 
             validators = validators.map(r => {
                 if(typeof r === 'function') return r;
