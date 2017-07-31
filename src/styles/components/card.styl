@@ -1,0 +1,95 @@
+.ms-card
+    ms-elevation(2);
+    position: relative
+    border-radius: .15em
+    min-width: 0
+    background-color: #fff
+    margin: .25em
+
+    > *:first-child
+        border-top-left-radius: inherit
+        border-top-right-radius: inherit
+
+    > *:last-child
+        border-bottom-left-radius: inherit
+        border-bottom-right-radius: inherit
+
+    &--raised
+        ms-elevation(3)
+        
+    &--tile
+        border-radius: 0
+    
+    &--flat
+        ms-elevation(0)
+
+    &--hover
+        cursor: pointer
+        transition: all .4s cubic-bezier(.25, .8, .25, 1)
+        transition-property: box-shadow
+
+        &:hover
+            ms-elevation(8)
+
+    &__title
+        align-items: center
+        display: flex
+        flex-wrap: wrap
+        padding: 1em
+        
+        &--primary
+            padding-top: 1.5em
+
+    &__text
+        padding: 1em
+        width: 100%
+    
+    &__media
+        display: block
+        overflow: hidden
+        position: relative
+        height: auto
+        
+        &__img
+            width: 100%
+            height: auto
+
+            &--background
+                border-radius: inherit
+                position: absolute
+                left: 0
+                top: 0
+                width: 100%
+                height: 100%
+
+            &--autowidth
+                width: auto
+                height: 100%
+
+            &:not(^[1]__img--background) + ^[1]__content
+                position: absolute
+                left: 0
+                top: 0
+                height: 100%
+        
+        &__content
+            display: flex
+            flex-flow: row wrap
+            align-items: flex-end
+            width: 100%
+            height: 100%
+            position: relative
+            color: #fff
+            padding: 1em
+
+            & ^[0]__title
+                typo-headline()
+                padding: 0
+        
+    &__actions
+        align-items: center
+        display: flex
+        padding: .6em .4em
+        
+        > *
+            margin: 0 .25em

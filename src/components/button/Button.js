@@ -44,8 +44,8 @@ export default {
 
         'btn--tab-focused': this.tabFocused,
 
-        'btn--dark': !this.light && this.dark,
-        'btn--light': this.light || !this.dark,
+        'btn--dark': this.dark,
+        'btn--light': this.light,
 
         'btn--block': this.block,
         'btn--raised': !this.flat,

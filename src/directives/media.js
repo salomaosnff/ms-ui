@@ -1,10 +1,29 @@
-const media = (el, bind) => {
+const media = (el, bind, vnode) => {
     
     if(!bind.modifiers || !bind.value) return;
 
-    let classes = bind.value,
-        devices = Object.keys(bind.modifiers)
-            .filter(dev => ['xs', 'sm', 'md', 'lg', 'xl'].includes(dev));
+    const vue = vnode.context;
+    const breakpoints = vue.$ms.breakpoints;
+    const medias = Object.keys(breakpoints);
+
+    let devices = Object.keys(bind.modifiers)
+            .filter(dev => medias.includes(dev));
+
+    // Function media
+    if(typeof bind.value === 'function') {
+        if(typeof window === 'undefined') return;
+
+        const callback = () => {
+            const dev = Object.keys(breakpoints).filter(d => breakpoints[d](window.innerWidth)).pop();
+            return (!devices.length || devices.includes(dev)) ? bind.value(dev) : false;
+        };
+
+        callback() && window.addEventListener('resize', callback);
+        return;
+    }
+
+    // Media class
+    let classes = bind.value;
 
     if(typeof classes === "string"){
         classes = classes.split(/[\s\t|.]/);
@@ -20,7 +39,7 @@ const media = (el, bind) => {
             if(!bind.arg){
                 el.classList.add(c);
             }
-        })
+        });
 };
 
 export default function install(Vue) {

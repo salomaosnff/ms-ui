@@ -29,11 +29,14 @@ export default {
         }
 
         const classes = {
-            'app--dark': props.dark && !props.light,
-            'app--light': props.light
+            'app--dark': props.dark,
+            'app--light': !props.dark && props.light
         }
 
         data.staticClass += Object.keys(classes).filter(k => classes[k]).join(' ');
+
+        // Set ms app attribute
+        data.attrs['ms-app'] = true;
 
         data.domProps = { id: props.id }
 

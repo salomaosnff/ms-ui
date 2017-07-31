@@ -1,0 +1,176 @@
+.ms-tabs
+    display: block
+    position: relative
+    overflow: hidden
+    width: 100%
+
+    &--grow
+        & ^[0]__li
+            flex: 1
+
+    &--fixed
+        & ^[0]__li
+            min-width: 160px
+            max-width: 264px
+            flex: 0 1 160px
+
+            +media(xs, sm)
+                min-width: 72px
+
+    &--centered
+        & ^[0]__container
+            +media(sm) // Fix for mobile touch scroll
+                justify-content: center
+
+    &--right
+        & ^[0]__container
+            justify-content: flex-end
+
+    &--mobile
+        & ^[0]__bar
+            & ^[0]__nav-icon
+                display: none
+
+            & ^[0]__wrapper
+                &--scrollable^[0]__wrapper--overflow
+                    overflow: hidden !important
+
+    &:not(^[0]--grow):not(^[0]--mobile)
+        &:not(^[0]--centered)
+            & ^[0]__wrapper
+                &--scrollable
+                    margin: 0 3.75em
+                    overflow: hidden !important
+
+
+    // Light Theme
+    &--light
+    /.app--dark &
+        & ^[0]__bar
+            background-color: $ms-theme.primary.base;
+
+        & ^[0]__li
+            color: rgba(#fff, 98%)
+
+        & ^[0]__item
+            color: rgba(#fff, 65%)
+
+            &--disabled
+                color: rgba(#fff, 35%)
+
+        & ^[0]__slider
+            background-color: rgba(#fff, 98%)
+
+    // Bar
+    &__bar
+        background-color: $ms-colors.grey.l4;
+        width: 100%
+        position: relative
+        min-height: 3em
+
+        +media(xs, md)
+            padding-left: 0
+
+        ^[0]__nav-icon
+            position: absolute
+            top: 0
+            width: 32px
+            align-items: center
+            height: 100%
+            cursor: pointer
+            user-select: none
+
+            &.ms-icon--left
+                left: 1em
+
+            &.ms-icon--right
+                right: 1em
+        
+    // Container
+    &__container
+        display: flex
+        height: 100%
+        width: 100%
+        position: relative
+        padding: 0
+        top: 0
+        align-items: center
+        list-style: none
+        will-change: transform
+        transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+
+        & > li:not(^[0]__slider)
+            height: 100%
+
+    // Wrapper
+    &__wrapper
+        position: relative
+        overflow-x: auto
+
+
+    // List item
+    &__li
+        color: $ms-theme.primary.base;
+
+    // Item
+    &__item
+        display: block
+        height: 100%
+        padding: .85em 1.618em
+        position: relative
+        text-align: center
+        text-decoration: none
+        text-transform: uppercase
+        text-overflow: ellipsis
+        white-space: nowrap
+        color: inherit
+        vertical-align: middle
+        color: $ms-colors.grey.d3;
+
+        &--active
+            color: inherit !important
+
+        .ms-icon:not(.ms-icon--left):not(.ms-icon--right)
+            color: inherit
+            margin: 0 0 .1em 0
+            font-size: 1.8em
+            display: block
+
+        .ms-icon--left, .ms-icon--right
+            display: inline-block
+            font-size: 1.1em
+
+        .ms-icon--left
+            margin-right: .4em
+
+        .ms-icon--right
+            margin-left: .4em
+
+        &--disabled
+            color: $ms-colors.grey.d1;
+            pointer-events: none
+
+    // Items (content container)
+    &__items
+        position: relative
+        border-width: 0 1px 1px 1px
+        border-style: solid
+        border-color: rgba(#000, .1)
+        overflow: hidden
+
+    // Content (blocks)
+    &__content
+        transition: $primary-transition
+        width: 100%
+
+    // Slider
+    &__slider
+        position: absolute
+        bottom: 0
+        height: 3px
+        background: $ms-theme.primary.base;
+        transition: $primary-transition
+
+        &--top
+            bottom: auto
+            top: 0

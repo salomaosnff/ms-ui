@@ -1,4 +1,4 @@
-import Flex from './flex.vue';
+import Flex from './flex';
 
 export default function install(Vue) {
     Vue.component('ms-flex', Flex);

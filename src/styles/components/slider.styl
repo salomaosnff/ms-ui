@@ -1,0 +1,46 @@
+.ms-slider
+    position: relative
+    display: block
+
+    &__wrapper
+        position: relative
+        overflow-x: auto
+
+        &--overflow
+            overflow: hidden !important
+
+    &__container
+        display: flex
+        flex-flow: row nowrap
+        transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+
+    &__item
+        flex: 1 0 auto
+
+        +media(xs, sm)
+            flex: 1 0 90%
+            width: 90% !important
+
+    &__nav-icon
+        cursor: pointer
+        position: absolute
+        top: 50%
+        transform: translate(0, -50%)
+        transition: all .3s $primary-transition;
+        padding: .4em
+        border-radius: 50%
+        color: #fff
+        text-shadow: 0 1px rgba(#000, 75%)
+
+        &.ms-icon--left
+            left: .8em
+
+        &.ms-icon--right
+            right: .8em
+
+    // Colors
+    for $name, $color in $ms-theme
+        &--{$name}
+            & ^[0]__nav-icon
+                background-color: transparent;
+                color: $color['base'];

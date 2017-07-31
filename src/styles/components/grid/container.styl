@@ -9,5 +9,13 @@
     +media($device)
       padding 0 $container-padding[$device];
 
-  &-fluid
+  &--fluid
     max-width 100%
+
+  &.fill-height
+    align-items: center
+    display: flex
+    
+    .ms-layout
+      height: 100%
+      flex: 1 0 auto
