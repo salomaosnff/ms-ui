@@ -1,0 +1,35 @@
+.ms-rate
+    position: relative
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    color: $ms-theme.primary.base;
+
+    &--vertical
+        flex-direction: column
+
+    &--has-label
+        margin-bottom: 1em
+
+    &.ms-theme--light
+    /.app--dark &:not(.ms-theme--light)
+        color: rgba(#fff, 75%)
+
+    &__icon
+        flex: 1
+        transition: all .15s $transition.primary;
+
+        ^[0]:not(^[0]--readonly)
+            cursor: pointer
+
+    &__info
+        font-size: .6em
+        padding: 0
+        margin: 0
+        color: $ms-colors.grey.b;
+        text-align: left
+        position: absolute
+        width: 100%
+        left: .5em
+        top: 90%
+        bottom: .2em

@@ -11,6 +11,7 @@ export default {
             type: String,
             default: 'auto'
         },
+        autowidth: Boolean,
         hover: Boolean,
         img: String,
         raised: Boolean,
@@ -28,6 +29,7 @@ export default {
             'ms-card--hover': props.hover,
             'ms-card--raised': props.raised,
             'ms-card--tile': props.tile,
+            'ms-card--autowidth': props.autowidth,
             'ms-theme--dark': props.dark,
             'ms-theme--light': props.light
         }

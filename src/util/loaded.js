@@ -1,5 +1,5 @@
 function loaded(cb, i = 0) {
-    if (i > 4) return;
+    if (i > 50) return;
 
     if (document.readyState === 'complete') {
         return setTimeout(cb, 0);

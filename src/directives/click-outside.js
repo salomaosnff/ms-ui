@@ -12,15 +12,17 @@ const directive = (e, el, bind, v) => {
 
 export default function install(Vue) {
     Vue.directive('click-outside', {
-        bind: (el, bind, v) => {
-            const outside = document.querySelector('body');
-            const click = e => directive(e, el, bind, v);
-            outside.addEventListener('click', click, false);
-            el._clickOutside = click;
+        bind (el, bind, v) {
+            v.context.$ms.loaded(() => {
+                const outside = document.querySelector('[ms-app]');
+                const click = e => directive(e, el, bind, v);
+                outside.addEventListener('click', click, false);
+                el._clickOutside = click;
+            });
         },
-        unbind: (el) => {
-            const outside = document.querySelector('body');
-            outside.removeEventListener('click', el._clickOutside, false);
+        unbind (el) {
+            const outside = document.querySelector('[ms-app]');
+            outside && outside.removeEventListener('click', el._clickOutside, false);
         }
     });
 }

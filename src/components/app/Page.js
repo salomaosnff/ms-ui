@@ -2,9 +2,13 @@ export default {
     functional: true,
 
     props: {
+        title: {
+            type: String,
+            default: ''
+        },
         tag: {
             type: String,
-            default: 'main'
+            default: 'div'  
         },
         light: {
             type: Boolean,
@@ -13,11 +17,15 @@ export default {
         dark: Boolean,
         id: {
             type: String,
-            default: 'app'
+            default: 'page'
         }
     },
     render (create, { props, data, children }) {
-        data.staticClass = `app ${data.staticClass || ''} `;
+        data.staticClass = `ms-page ${data.staticClass || ''}`;
+        
+        if(props.title) {
+            document.title = props.title;
+        }
 
         const classes = {
             'app--dark': props.dark,
@@ -25,9 +33,7 @@ export default {
         }
 
         data.staticClass += Object.keys(classes).filter(k => classes[k]).join(' ');
-
-        data.attrs['ms-app'] = true;
-        data.domProps = { id: props.id };
+        data.domProps = { id: props.id }
 
         return create(props.tag, data, children);
     }

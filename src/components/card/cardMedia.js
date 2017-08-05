@@ -12,17 +12,23 @@ export default {
             type: Boolean,
             default: true
         },
-        autowidth: Boolean
+        autowidth: Boolean,
+        href: String
     },
 
     render(create) {
+        const tag = this.href ? 'a' : 'div';
+
         const data = {
             'class': 'ms-card__media',
             style: {
                 height: !isNaN(this.height) ? `${this.height}px` : this.height
             },
+            domProps: {},
             on: this.$listeners
         };
+
+        if(this.href) data.domProps.href = this.href;
 
         const children = [];
 
@@ -49,6 +55,6 @@ export default {
             'class': 'ms-card__media__content'
         }, this.$slots.default))
 
-        return create('div', data, children);
+        return create(tag, data, children);
     }
 }

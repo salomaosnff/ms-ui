@@ -23,11 +23,16 @@
     &--flat
         ms-elevation(0)
 
+    &--autowidth
+        display: inline-block
+
     &--hover
-        cursor: pointer
         transition: all .4s cubic-bezier(.25, .8, .25, 1)
         transition-property: box-shadow
 
+        & ^[0]__media
+            cursor: pointer
+            
         &:hover
             ms-elevation(8)
 
@@ -49,7 +54,7 @@
         overflow: hidden
         position: relative
         height: auto
-        
+
         &__img
             width: 100%
             height: auto
@@ -80,11 +85,13 @@
             height: 100%
             position: relative
             color: #fff
-            padding: 1em
 
             & ^[0]__title
                 typo-headline()
-                padding: 0
+                width: 100%
+                padding: .6rem 1rem
+                background: linear-gradient(to bottom, transparent, rgba(#000, 75%))
+                text-shadow: -1px 1px 0 rgba(#000, 65%)
         
     &__actions
         align-items: center

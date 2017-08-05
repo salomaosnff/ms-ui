@@ -6,6 +6,7 @@ import Media from './directives/media';
 import Ripple from './directives/ripple';
 import ClickOutside from './directives/click-outside';
 import Touch from './directives/touch';
+import Affix from './directives/affix';
 
 // Components
 import App from './components/app';
@@ -18,6 +19,8 @@ import Hr from './components/hr';
 import Tabs from './components/tabs';
 import Card from './components/card';
 import Slider from './components/slider';
+import Rate from './components/rate';
+import Dialog from './components/dialog';
 
 const Plugin = {
     // Directives
@@ -25,6 +28,7 @@ const Plugin = {
     Ripple,
     ClickOutside,
     Touch,
+    Affix,
 
     // Components
     App,
@@ -36,7 +40,9 @@ const Plugin = {
     Hr,
     Tabs,
     Card,
-    Slider
+    Slider,
+    Rate,
+    Dialog
 };
 
 Plugin.install = (Vue, options) => {
@@ -48,13 +54,6 @@ Plugin.install = (Vue, options) => {
         }
     }, options);
 
-    for (let c in Plugin) {
-        if (c === 'install') {
-            continue;
-        }
-        Vue.use(Plugin[c], options);
-    }
-
     Vue.prototype.$ms = {
         loaded: Loaded,
         breakpoints: {
@@ -64,6 +63,13 @@ Plugin.install = (Vue, options) => {
             lg: m => m > 1200,
             xl: m => m > 1920
         }
+    }
+
+    for (let c in Plugin) {
+        if (c === 'install') {
+            continue;
+        }
+        Vue.use(Plugin[c], options);
     }
 };
 
